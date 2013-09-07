@@ -1,23 +1,22 @@
 package com.thekthuser.medlog;
 
-/*import android.app.Activity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;*/
-import android.os.Bundle;
+import android.view.MenuItem;
 
-public class MedLog extends BaseActivity
+public class BaseActivity extends Activity
 {
     /** Called when the activity is first created. */
-    @Override
+    /*@Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-    }
+    }*/
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.layout.menu, menu);
@@ -33,6 +32,6 @@ public class MedLog extends BaseActivity
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }*/
+    }
 
 }
