@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MedLog</string>
-    <string name="profile">Profile</string>
+    <string name="menu_profile">Profile</string>
+    <string name="profile">Profile:</string>
+    <string name="name">Name:</string>
+    <string name="address">Address:</string>
+    <string name="phone">Phone:</string>
+    <string name="update">Update</string>
 </resources>

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.content.Intent;
 
 public class BaseActivity extends Activity
 {
@@ -27,11 +29,16 @@ public class BaseActivity extends Activity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_profile:
-                //profile();
+                profile();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public void profile() {
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
+        }
 
 }
