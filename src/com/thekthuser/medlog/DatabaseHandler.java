@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHandler extends SQLiteOpenHelper {
     //DATABASE_CREATE = "CREATE TABLE general_info (_id integer primary key autoincrement, name text, address text, phone text);";
 
     public static final String DATABASE_NAME = "medlog.db";
@@ -26,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         + COLUMN_PHONE + " text);";
 
 
-    public MySQLiteHelper(Context context) {
+    public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -38,9 +38,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(MySQLiteHelper.class.getName(),
+        /*Log.w(MySQLiteHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + "to "
-                + newVersion + ", which will destroy all old data.");
+                + newVersion + ", which will destroy all old data.");*/
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_GENERAL_INFO);
         onCreate(db);
     }
