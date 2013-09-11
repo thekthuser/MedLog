@@ -3,7 +3,6 @@ package com.thekthuser.medlog;
 import android.os.Bundle;
 import android.view.View;
 import android.app.AlertDialog;
-import android.database.sqlite.*;
 
 public class Profile extends BaseActivity
 {
