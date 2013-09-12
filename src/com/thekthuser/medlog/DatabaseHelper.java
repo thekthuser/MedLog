@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DatabaseHandler extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
     //DATABASE_CREATE = "CREATE TABLE general_info (_id integer primary key autoincrement, name text, address text, phone text);";
 
     public static final String DATABASE_NAME = "medlog.db";
@@ -26,7 +26,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         + COLUMN_PHONE + " text);";
 
 
-    public DatabaseHandler(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
