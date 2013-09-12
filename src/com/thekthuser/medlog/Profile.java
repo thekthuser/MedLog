@@ -16,10 +16,10 @@ public class Profile extends BaseActivity
     }
 
     public void updateProfile(View view) {
-        new AlertDialog.Builder(this)
+        /*new AlertDialog.Builder(this)
             .setTitle("Title")
             .setMessage("Message")
-            .show();
+            .show();*/
     }
 
 
