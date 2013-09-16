@@ -18,14 +18,28 @@ public class Profile extends BaseActivity
         setContentView(R.layout.profile);
     }
 
+    /*public void togglePatient (View view) {
+        findViewById(R.id.patient_info).setVisibility(view.GONE);
+    }*/
+
+    public void toggleSelf(View view) {
+        //findViewById(R.id.self).setVisibility(View.INVISIBLE);
+        View self = findViewById(R.id.self);
+        if (self.getVisibility() == View.VISIBLE) {
+            self.setVisibility(View.INVISIBLE);
+        } else {
+            self.setVisibility(View.VISIBLE);
+        }
+    }
+
     public void updateProfile(View view) {
-        EditText name = (EditText) findViewById(R.id.edit_name);
-        EditText address = (EditText) findViewById(R.id.edit_address);
-        EditText phone = (EditText) findViewById(R.id.edit_phone);
+        //EditText name = (EditText) findViewById(R.id.edit_name);
+        //EditText address = (EditText) findViewById(R.id.edit_address);
+        //EditText phone = (EditText) findViewById(R.id.edit_phone);
         //Toast.makeText(getApplicationContext(), name.getText() + " " + address.getText() + " " + phone.getText(), Toast.LENGTH_LONG).show();
 
-        TextView outname = (TextView) findViewById(R.id.profile_name);
-        outname.setText(name.getText());
+        //TextView outname = (TextView) findViewById(R.id.profile_name);
+        //outname.setText(name.getText());
        // findViewById(R.id.profile_name).setText(name.getText());
     }
 }
