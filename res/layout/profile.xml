@@ -17,6 +17,7 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:visibility="gone"
         android:id="@+id/self"
         >
     
@@ -37,12 +38,13 @@
                 android:layout_height="wrap_content"
                 android:text="Sample Name"
                 android:padding="5dp"
-                android:visibility="gone"
+                android:id="@+id/self_name_show"
             />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/testtext"
+                android:visibility="gone"
+                android:id="@+id/self_name_edit"
             />
         </LinearLayout>
 
@@ -63,6 +65,13 @@
                 android:layout_height="wrap_content"
                 android:text="Sample Address"
                 android:padding="5dp"
+                android:id="@+id/self_address_show"
+            />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/self_address_edit"
+                android:visibility="gone"
             />
         </LinearLayout>
 
@@ -77,14 +86,38 @@
                 android:text="Phone:"
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
+                android:autoLink="all"
             />
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Sample Phone"
                 android:padding="5dp"
+                android:id="@+id/self_phone_show"
+            />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/self_phone_edit"
             />
         </LinearLayout>
+        <Button 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Edit"
+            android:id="@+id/edit_self_button"
+            android:onClick="toggleSelfEdit"
+        />
+        <Button 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Update"
+            android:id="@+id/update_self_button"
+            android:visibility="gone"
+            android:onClick="updateSelf"
+        />
     </LinearLayout>
 
 </LinearLayout>

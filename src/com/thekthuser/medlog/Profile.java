@@ -26,10 +26,35 @@ public class Profile extends BaseActivity
         //findViewById(R.id.self).setVisibility(View.INVISIBLE);
         View self = findViewById(R.id.self);
         if (self.getVisibility() == View.VISIBLE) {
-            self.setVisibility(View.INVISIBLE);
+            self.setVisibility(View.GONE);
         } else {
             self.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void toggleSelfEdit(View view) {
+        View name_show = findViewById(R.id.self_name_show);
+        View name_edit = findViewById(R.id.self_name_edit);
+        View address_show = findViewById(R.id.self_address_show);
+        View address_edit = findViewById(R.id.self_address_edit);
+        View phone_show = findViewById(R.id.self_phone_show);
+        View phone_edit = findViewById(R.id.self_phone_edit);
+        View edit = findViewById(R.id.edit_self_button);
+        View update = findViewById(R.id.update_self_button);
+
+        name_show.setVisibility(View.GONE);
+        name_edit.setVisibility(View.VISIBLE);
+        address_show.setVisibility(View.GONE);
+        address_edit.setVisibility(View.VISIBLE);
+        phone_show.setVisibility(View.GONE);
+        phone_edit.setVisibility(View.VISIBLE);
+        edit.setVisibility(View.GONE);
+        update.setVisibility(View.VISIBLE);
+
+        
+    }
+
+    public void updateSelf(View view) {
     }
 
     public void updateProfile(View view) {
