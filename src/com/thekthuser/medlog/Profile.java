@@ -16,11 +16,13 @@ public class Profile extends BaseActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
-    }
 
-    /*public void togglePatient (View view) {
-        findViewById(R.id.patient_info).setVisibility(view.GONE);
-    }*/
+        //ProfileAdapter pAdapter = 
+        //new ProfileAdapter(getApplicationContext());
+        //pAdapter.open();
+        //pAdapter.close();
+
+    }
 
     public void toggleSelf(View view) {
         //findViewById(R.id.self).setVisibility(View.INVISIBLE);
@@ -50,11 +52,21 @@ public class Profile extends BaseActivity
         phone_edit.setVisibility(View.VISIBLE);
         edit.setVisibility(View.GONE);
         update.setVisibility(View.VISIBLE);
-
-        
     }
 
     public void updateSelf(View view) {
+        EditText name = (EditText) findViewById(R.id.self_name_edit);
+        EditText address = (EditText) findViewById(R.id.self_address_edit);
+        EditText phone = (EditText) findViewById(R.id.self_phone_edit);
+
+        GeneralInfo general = new GeneralInfo(name.getText().toString(), 
+        address.getText().toString(), phone.getText().toString());
+        //Toast.makeText(getApplicationContext(), general.getName(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), DatabaseHelper.DATABASE_NAME, Toast.LENGTH_SHORT).show();
+        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+        pAdapter.open();
+        //pAdapter.addSelf(general);
+        pAdapter.close();
     }
 
     public void updateProfile(View view) {
@@ -66,5 +78,9 @@ public class Profile extends BaseActivity
         //TextView outname = (TextView) findViewById(R.id.profile_name);
         //outname.setText(name.getText());
        // findViewById(R.id.profile_name).setText(name.getText());
+    }
+
+    public void refreshProfile(View view) {
+
     }
 }
