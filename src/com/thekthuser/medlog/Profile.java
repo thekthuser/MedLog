@@ -8,19 +8,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import android.util.Log;
+
 public class Profile extends BaseActivity
 {
+
+    private GeneralInfo self_general;
+    //should be private?
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
-
-        //ProfileAdapter pAdapter = 
-        //new ProfileAdapter(getApplicationContext());
-        //pAdapter.open();
-        //pAdapter.close();
+        
+        refreshProfile(findViewById(R.layout.profile));
 
     }
 
@@ -59,13 +62,15 @@ public class Profile extends BaseActivity
         EditText address = (EditText) findViewById(R.id.self_address_edit);
         EditText phone = (EditText) findViewById(R.id.self_phone_edit);
 
-        GeneralInfo general = new GeneralInfo(name.getText().toString(), 
-        address.getText().toString(), phone.getText().toString());
-        //Toast.makeText(getApplicationContext(), general.getName(), Toast.LENGTH_SHORT).show();
-        //Toast.makeText(getApplicationContext(), DatabaseHelper.DATABASE_NAME, Toast.LENGTH_SHORT).show();
+        self_general.setName(name.getText().toString());
+        self_general.setAddress(address.getText().toString());
+        self_general.setPhone(phone.getText().toString());
+        Log.i("updateSelf", Integer.toString(self_general.getId()));
+        Log.i("updateSelf", self_general.getName());
+
         ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
         pAdapter.open();
-        //pAdapter.addSelf(general);
+        pAdapter.addSelf(self_general);
         pAdapter.close();
     }
 
@@ -81,6 +86,19 @@ public class Profile extends BaseActivity
     }
 
     public void refreshProfile(View view) {
+        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+        pAdapter.open();
 
+        self_general = pAdapter.getGeneralInfo(1);
+        //change this later
+        pAdapter.close();
+
+        TextView self_name = (TextView) findViewById(R.id.self_name_show);
+        TextView self_address = (TextView) findViewById(R.id.self_address_show);
+        TextView self_phone = (TextView) findViewById(R.id.self_phone_show);
+
+        self_name.setText(self_general.getName());
+        self_address.setText(self_general.getAddress());
+        self_phone.setText(self_general.getPhone());
     }
 }

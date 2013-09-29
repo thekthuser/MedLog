@@ -1,7 +1,7 @@
 package com.thekthuser.medlog;
 
 public class GeneralInfo {
-    private long id;
+    private int id;
     private String name;
     private String address;
     private String phone;
@@ -14,16 +14,17 @@ public class GeneralInfo {
     }
 
     public GeneralInfo(String name, String address, String phone) {
+        this.id = -1;
         this.name = name;
         this.address = address;
         this.phone = phone;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -47,7 +48,7 @@ public class GeneralInfo {
         return phone;
     }
 
-    public void setPhone() {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }
