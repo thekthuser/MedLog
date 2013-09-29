@@ -75,6 +75,9 @@ public class Profile extends BaseActivity
         pAdapter.open();
         pAdapter.addSelf(self_general);
         pAdapter.close();
+
+        setContentView(R.layout.profile);
+        refreshProfile(findViewById(R.layout.profile));
     }
 
     public void updateProfile(View view) {
