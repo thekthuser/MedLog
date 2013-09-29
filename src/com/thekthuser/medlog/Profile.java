@@ -38,12 +38,15 @@ public class Profile extends BaseActivity
     }
 
     public void toggleSelfEdit(View view) {
-        View name_show = findViewById(R.id.self_name_show);
-        View name_edit = findViewById(R.id.self_name_edit);
-        View address_show = findViewById(R.id.self_address_show);
-        View address_edit = findViewById(R.id.self_address_edit);
-        View phone_show = findViewById(R.id.self_phone_show);
-        View phone_edit = findViewById(R.id.self_phone_edit);
+        TextView name_show = (TextView) findViewById(R.id.self_name_show);
+        TextView name_edit = (TextView) findViewById(R.id.self_name_edit);
+        name_edit.setText(name_show.getText());
+        TextView address_show = (TextView) findViewById(R.id.self_address_show);
+        TextView address_edit = (TextView) findViewById(R.id.self_address_edit);
+        address_edit.setText(address_show.getText());
+        TextView phone_show = (TextView) findViewById(R.id.self_phone_show);
+        TextView phone_edit = (TextView) findViewById(R.id.self_phone_edit);
+        phone_edit.setText(phone_show.getText());
         View edit = findViewById(R.id.edit_self_button);
         View update = findViewById(R.id.update_self_button);
 
