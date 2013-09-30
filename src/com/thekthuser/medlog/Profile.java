@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import android.view.inputmethod.InputMethodManager;
+
 import android.util.Log;
 
 public class Profile extends BaseActivity
@@ -75,6 +77,10 @@ public class Profile extends BaseActivity
         pAdapter.open();
         pAdapter.addSelf(self_general);
         pAdapter.close();
+
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        //above hides keyboard
 
         setContentView(R.layout.profile);
         refreshProfile(findViewById(R.layout.profile));
