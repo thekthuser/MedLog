@@ -3,8 +3,12 @@
     <string name="app_name">MedLog</string>
     <string name="menu_profile">Profile</string>
     <string name="profile">Profile:</string>
+    <string name="self">Self:</string>
+
     <string name="name">Name:</string>
     <string name="address">Address:</string>
     <string name="phone">Phone:</string>
+
     <string name="update">Update</string>
+    <string name="edit">Edit</string>
 </resources>
