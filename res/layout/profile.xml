@@ -16,7 +16,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:visibility="gone"
         android:id="@+id/self"
         >
@@ -119,5 +119,13 @@
             android:onClick="updateSelf"
         />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Prescriber:"
+        android:clickable="true"
+        android:id="@+id/testmargin"
+    />
 
 </LinearLayout>
