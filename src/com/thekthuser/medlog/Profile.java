@@ -39,6 +39,15 @@ public class Profile extends BaseActivity
         }
     }
 
+    public void togglePrescriber(View view) {
+        View prescriber = findViewById(R.id.prescriber);
+        if (prescriber.getVisibility() == View.VISIBLE) {
+            prescriber.setVisibility(View.GONE);
+        } else {
+            prescriber.setVisibility(View.VISIBLE);
+        }
+    }
+
     public void toggleSelfEdit(View view) {
         TextView name_show = (TextView) findViewById(R.id.self_name_show);
         TextView name_edit = (TextView) findViewById(R.id.self_name_edit);

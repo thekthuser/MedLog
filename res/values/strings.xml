@@ -4,6 +4,7 @@
     <string name="menu_profile">Profile</string>
     <string name="profile">Profile:</string>
     <string name="self">Self:</string>
+    <string name="prescriber">Prescriber:</string>
 
     <string name="name">Name:</string>
     <string name="address">Address:</string>
