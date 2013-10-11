@@ -10,21 +10,60 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //DATABASE_CREATE = "CREATE TABLE general_info (_id integer primary key autoincrement, name text, address text, phone text);";
 
     public static final String DATABASE_NAME = "medlog.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 3;
 
     public static final String TABLE_GENERAL_INFO = "general_info";
+    public static final String TABLE_SELF = "self";
+    public static final String TABLE_PRESCRIBER = "prescriber";
+    public static final String TABLE_PHARMACY = "pharmacy";
+    public static final String TABLE_EMERGENCY = "emergency";
+
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_ADDRESS = "address";
     public static final String COLUMN_PHONE = "phone";
+
+    public static final String COLUMN_HOURS = "hours";
+    public static final String COLUMN_SPECIALTY = "specialty";
+    public static final String COLUMN_GENERAL_INFO_ID = "general_info_id";
     //datetime
 
-    public static final String DATABASE_CREATE = "CREATE TABLE "
+    public static final String GENERAL_INFO_CREATE = "CREATE TABLE "
         + TABLE_GENERAL_INFO + "(" 
         + COLUMN_ID + " integer primary key autoincrement, " 
         + COLUMN_NAME + " text,"
         + COLUMN_ADDRESS + " text,"
         + COLUMN_PHONE + " text);";
+
+    public static final String SELF_CREATE = "CREATE TABLE "
+        + TABLE_SELF + "("
+        + COLUMN_ID + " integer primary key autoincrement, "
+        + COLUMN_GENERAL_INFO_ID + " integer, "
+        + "FOREIGN KEY (" + COLUMN_GENERAL_INFO_ID + ") REFERENCES "
+        + TABLE_GENERAL_INFO + " (" + COLUMN_ID + "));";
+
+    public static final String PRESCRIBER_CREATE = "CREATE TABLE "
+        + TABLE_PRESCRIBER + "("
+        + COLUMN_ID + " integer primary key autoincrement, "
+        + COLUMN_SPECIALTY + " text, "
+        + COLUMN_GENERAL_INFO_ID + " integer, "
+        + "FOREIGN KEY (" + COLUMN_GENERAL_INFO_ID + ") REFERENCES "
+        + TABLE_GENERAL_INFO + " (" + COLUMN_ID + "));";
+
+    public static final String PHARMACY_CREATE = "CREATE TABLE "
+        + TABLE_PHARMACY + "("
+        + COLUMN_ID + " integer primary key autoincrement, "
+        + COLUMN_HOURS + " text, "
+        + COLUMN_GENERAL_INFO_ID + " integer, "
+        + "FOREIGN KEY (" + COLUMN_GENERAL_INFO_ID + ") REFERENCES "
+        + TABLE_GENERAL_INFO + " (" + COLUMN_ID + "));";
+
+    public static final String EMERGENCY_CREATE = "CREATE TABLE "
+        + TABLE_EMERGENCY + "("
+        + COLUMN_ID + " integer primary key autoincrement, "
+        + COLUMN_GENERAL_INFO_ID + " integer, "
+        + "FOREIGN KEY (" + COLUMN_GENERAL_INFO_ID + ") REFERENCES "
+        + TABLE_GENERAL_INFO + " (" + COLUMN_ID + "));";
 
 
     public DatabaseHelper(Context context) {
@@ -33,7 +72,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(DATABASE_CREATE);
+        db.execSQL(GENERAL_INFO_CREATE);
+        db.execSQL(SELF_CREATE);
+        db.execSQL(PRESCRIBER_CREATE);
+        db.execSQL(PHARMACY_CREATE);
+        db.execSQL(EMERGENCY_CREATE);
         //run for other tables
     }
 
