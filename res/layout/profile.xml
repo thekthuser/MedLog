@@ -216,12 +216,38 @@
                 android:id="@+id/prescriber_phone_edit"
             />
         </LinearLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+        >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/specialty"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:autoLink="all"
+            />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Specialty"
+                android:padding="5dp"
+                android:id="@+id/prescriber_specialty_show"
+            />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/prescriber_specialty_edit"
+            />
+        </LinearLayout>
         <Button 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="@string/edit"
-            android:id="@+id/prescriber_self_button"
+            android:id="@+id/edit_prescriber_button"
             android:onClick="togglePrescriberEdit"
         />
         <Button 

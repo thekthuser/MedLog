@@ -10,6 +10,8 @@
     <string name="address">Address:</string>
     <string name="phone">Phone:</string>
 
+    <string name="specialty">Specialty:</string>
+
     <string name="update">Update</string>
     <string name="edit">Edit</string>
 </resources>
