@@ -71,6 +71,36 @@ public class Profile extends BaseActivity
         update.setVisibility(View.VISIBLE);
     }
 
+    public void togglePrescriberEdit(View view) {
+        TextView name_show = (TextView) findViewById(R.id.prescriber_name_show);
+        TextView name_edit = (TextView) findViewById(R.id.prescriber_name_edit);
+        name_edit.setText(name_show.getText());
+        TextView address_show = (TextView) findViewById(R.id.prescriber_address_show);
+        TextView address_edit = (TextView) findViewById(R.id.prescriber_address_edit);
+        address_edit.setText(address_show.getText());
+        TextView phone_show = (TextView) findViewById(R.id.prescriber_phone_show);
+        TextView phone_edit = (TextView) findViewById(R.id.prescriber_phone_edit);
+        phone_edit.setText(phone_show.getText());
+        TextView specialty_show = (TextView) findViewById(R.id.prescriber_specialty_show);
+        TextView specialty_edit = (TextView) findViewById(R.id.prescriber_specialty_edit);
+        specialty_edit.setText(specialty_show.getText());
+
+
+        View edit = findViewById(R.id.edit_prescriber_button);
+        View update = findViewById(R.id.update_prescriber_button);
+
+        name_show.setVisibility(View.GONE);
+        name_edit.setVisibility(View.VISIBLE);
+        address_show.setVisibility(View.GONE);
+        address_edit.setVisibility(View.VISIBLE);
+        phone_show.setVisibility(View.GONE);
+        phone_edit.setVisibility(View.VISIBLE);
+        specialty_show.setVisibility(View.GONE);
+        specialty_edit.setVisibility(View.VISIBLE);
+        edit.setVisibility(View.GONE);
+        update.setVisibility(View.VISIBLE);
+    }
+
     public void updateSelf(View view) {
         EditText name = (EditText) findViewById(R.id.self_name_edit);
         EditText address = (EditText) findViewById(R.id.self_address_edit);
