@@ -109,12 +109,34 @@ public class Profile extends BaseActivity
         self_general.setName(name.getText().toString());
         self_general.setAddress(address.getText().toString());
         self_general.setPhone(phone.getText().toString());
-        Log.i("updateSelf", Integer.toString(self_general.getId()));
-        Log.i("updateSelf", self_general.getName());
+        //Log.i("updateSelf", Integer.toString(self_general.getId()));
+        //Log.i("updateSelf", self_general.getName());
 
         ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
         pAdapter.open();
         pAdapter.addSelf(self_general);
+        pAdapter.close();
+
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        //above hides keyboard
+
+        setContentView(R.layout.profile);
+        refreshProfile(findViewById(R.layout.profile));
+    }
+
+    public void updatePrescriber(View view) {
+        EditText name = (EditText) findViewById(R.id.prescriber_name_edit);
+        EditText address = (EditText) findViewById(R.id.prescriber_address_edit);
+        EditText phone = (EditText) findViewById(R.id.prescriber_phone_edit);
+        EditText specialty = (EditText) findViewById(R.id.prescriber_specialty_edit);
+
+        GeneralInfo pGeneral = new GeneralInfo(name.getText().toString(), address.getText().toString(), phone.getText().toString());
+        Prescriber prescriber = new Prescriber(specialty.getText().toString(), pGeneral);
+
+        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+        pAdapter.open();
+        pAdapter.addPrescriber(prescriber);
         pAdapter.close();
 
         InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
@@ -140,16 +162,30 @@ public class Profile extends BaseActivity
         ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
         pAdapter.open();
 
-        self_general = pAdapter.getGeneralInfo(1);
+        //self_general = pAdapter.getGeneralInfo(1);
         //change this later
+        Log.i("refresh", "before get");
+        Prescriber prescriber = pAdapter.getPrescriber(1);
+        GeneralInfo prescriber_general = prescriber.getGeneralInfo();
         pAdapter.close();
 
-        TextView self_name = (TextView) findViewById(R.id.self_name_show);
+        /*TextView self_name = (TextView) findViewById(R.id.self_name_show);
         TextView self_address = (TextView) findViewById(R.id.self_address_show);
         TextView self_phone = (TextView) findViewById(R.id.self_phone_show);
 
         self_name.setText(self_general.getName());
         self_address.setText(self_general.getAddress());
-        self_phone.setText(self_general.getPhone());
+        self_phone.setText(self_general.getPhone());*/
+
+
+        TextView prescriber_name = (TextView) findViewById(R.id.prescriber_name_show);
+        TextView prescriber_address = (TextView) findViewById(R.id.prescriber_address_show);
+        TextView prescriber_phone = (TextView) findViewById(R.id.prescriber_phone_show);
+        TextView prescriber_specialty = (TextView) findViewById(R.id.prescriber_specialty_show);
+
+        prescriber_name.setText(prescriber_general.getName());
+        prescriber_address.setText(prescriber_general.getAddress());
+        prescriber_phone.setText(prescriber_general.getPhone());
+        prescriber_specialty.setText(prescriber.getSpecialty());
     }
 }
