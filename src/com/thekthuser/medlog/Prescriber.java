@@ -24,7 +24,7 @@ public class Prescriber {
         this.id = id;
     }
 
-    public String getSpecialty(int id) {
+    public String getSpecialty() {
         return specialty;
     }
 
@@ -32,7 +32,7 @@ public class Prescriber {
         this.specialty = specialty;
     }
 
-    public GeneralInfo getGeneral() {
+    public GeneralInfo getGeneralInfo() {
         return general;
     }
 
