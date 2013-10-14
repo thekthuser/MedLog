@@ -12,6 +12,7 @@ public class Prescriber {
     }
 
     public Prescriber(String specialty, GeneralInfo general) {
+        this.id = -1;
         this.specialty = specialty;
         this.general = general;
     }
