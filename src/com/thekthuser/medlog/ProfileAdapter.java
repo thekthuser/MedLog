@@ -30,23 +30,28 @@ public class ProfileAdapter {
         dbHelper.close();
     }
 
-    public void addSelf(GeneralInfo general) {
+    public void addSelf(Self self) {
         //long?
+        Log.i("addSelf", "inside");
+        long general_id = addGeneralInfo(self.getGeneralInfo());
         ContentValues cValues = new ContentValues();
-        cValues.put(DatabaseHelper.COLUMN_NAME, general.getName());
+        /*cValues.put(DatabaseHelper.COLUMN_NAME, general.getName());
         cValues.put(DatabaseHelper.COLUMN_ADDRESS, general.getAddress());
-        cValues.put(DatabaseHelper.COLUMN_PHONE, general.getPhone());
-            if(general.getId() != -1) {
-                String sId = Integer.toString(general.getId());
-                String where = DatabaseHelper.COLUMN_ID + "=?";
+        cValues.put(DatabaseHelper.COLUMN_PHONE, general.getPhone());*/
+        cValues.put(DatabaseHelper.COLUMN_GENERAL_INFO_ID, general_id);
+            if(self.getId() != -1) {
+                String sId = Integer.toString(self.getId());
+                String where = DatabaseHelper.COLUMN_ID + " = ?";
                 String[] args = {
                     sId
                 };
-                db.update(DatabaseHelper.TABLE_GENERAL_INFO, cValues, where, args);
+                db.update(DatabaseHelper.TABLE_SELF, cValues, where, args);
+                Log.i("addSelf", "after update");
                 //Log.i("addSelf", "update");
                 //returns int
             } else {
-                db.insert(DatabaseHelper.TABLE_GENERAL_INFO, null, cValues);
+                db.insert(DatabaseHelper.TABLE_SELF, null, cValues);
+                Log.i("addSelf", "after insert");
                 //Log.i("addSelf", "insert");
                 //returns long
             }
@@ -164,6 +169,42 @@ public class ProfileAdapter {
             prescriber = new Prescriber(-1, "Specialty", pGeneral);
         }
         return prescriber;
+    }
+
+    public Self getSelf(int id) {
+        Log.i("getSelf", "inside, id = " + id);
+        String[] projection = {
+            DatabaseHelper.COLUMN_ID,
+            DatabaseHelper.COLUMN_GENERAL_INFO_ID
+        };
+        String selection = DatabaseHelper.COLUMN_ID + " = ?";
+        String sId = Integer.toString(id);
+        String[] selectionArgs = {
+            sId
+        };
+        String order = DatabaseHelper.COLUMN_ID + " DESC LIMIT 1";
+
+        Cursor cursor = dbr.query(
+            DatabaseHelper.TABLE_SELF,
+            projection,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            order
+        );
+
+        Self self;
+        if (cursor.moveToFirst()) {
+            Log.i("getSelf", "cursor found");
+            GeneralInfo sGeneral = getGeneralInfo(cursor.getInt(1));
+            self = new Self(cursor.getInt(0), sGeneral);
+        } else {
+            Log.i("getSelf", "curosr empty");
+            GeneralInfo sGeneral = getGeneralInfo(-1);
+            self = new Self(-1, sGeneral);
+        }
+        return self;
     }
 
 }
