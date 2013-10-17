@@ -111,13 +111,26 @@ public class Profile extends BaseActivity
         self_general.setPhone(phone.getText().toString());*/
         //Log.i("updateSelf", Integer.toString(self_general.getId()));
         //Log.i("updateSelf", self_general.getName());
-        GeneralInfo sGeneral = new GeneralInfo(name.getText().toString(), address.getText().toString(), phone.getText().toString());
+        /*GeneralInfo sGeneral = new GeneralInfo(name.getText().toString(), address.getText().toString(), phone.getText().toString());
         Self self = new Self(sGeneral);
 
         ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
         pAdapter.open();
         pAdapter.addSelf(self);
         Log.i("updateSelf", "after addSelf");
+        pAdapter.close();*/
+        View vSelf = findViewById(R.id.self);
+        Self self = (Self) vSelf.getTag();
+
+        GeneralInfo sGeneral = self.getGeneralInfo();
+        sGeneral.setName(name.getText().toString());
+        sGeneral.setAddress(address.getText().toString());
+        sGeneral.setPhone(phone.getText().toString());
+        self.setGeneralInfo(sGeneral);
+
+        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+        pAdapter.open();
+        pAdapter.addSelf(self);
         pAdapter.close();
 
         InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
@@ -164,6 +177,24 @@ public class Profile extends BaseActivity
     public void refreshProfile(View view) {
         ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
         pAdapter.open();
+        Self self = pAdapter.getSelf(1);
+        pAdapter.close();
+
+        GeneralInfo self_general = self.getGeneralInfo();
+        View sView = findViewById(R.id.self);
+        Log.i("refreshprofile getSelf", "self id = " + Integer.toString(self.getId()));
+        sView.setTag(self);
+
+        TextView self_name = (TextView) findViewById(R.id.self_name_show);
+        TextView self_address = (TextView) findViewById(R.id.self_address_show);
+        TextView self_phone = (TextView) findViewById(R.id.self_phone_show);
+
+        self_name.setText(self_general.getName());
+        self_address.setText(self_general.getAddress());
+        self_phone.setText(self_general.getPhone());
+
+        /*ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+        pAdapter.open();
         Log.i("refresh", "before get");
         Self self = pAdapter.getSelf(1);
         GeneralInfo self_general = self.getGeneralInfo();
@@ -190,6 +221,6 @@ public class Profile extends BaseActivity
         prescriber_name.setText(prescriber_general.getName());
         prescriber_address.setText(prescriber_general.getAddress());
         prescriber_phone.setText(prescriber_general.getPhone());
-        prescriber_specialty.setText(prescriber.getSpecialty());
+        prescriber_specialty.setText(prescriber.getSpecialty());*/
     }
 }
