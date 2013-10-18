@@ -77,6 +77,24 @@ public class ProfileAdapter {
         }
     }
 
+    public void addPharmacy(Pharmacy pharmacy) {
+        long general_id = addGeneralInfo(pharmacy.getGeneralInfo());
+        ContentValues cValues = new ContentValues();
+        cValues.put(DatabaseHelper.COLUMN_HOURS, pharmacy.getHours());
+        cValues.put(DatabaseHelper.COLUMN_GENERAL_INFO_ID, general_id);
+
+        if (pharmacy.getId() != -1) {
+            String sId = Integer.toString(pharmacy.getId());
+            String where = DatabaseHelper.COLUMN_ID + " = ?";
+            String[] args = {
+                sId
+            };
+            db.update(DatabaseHelper.TABLE_PHARMACY, cValues, where, args);
+        } else {
+            db.insert(DatabaseHelper.TABLE_PHARMACY, null, cValues);
+        }
+    }
+
     public long addGeneralInfo(GeneralInfo general) {
         ContentValues cValues = new ContentValues();
         cValues.put(DatabaseHelper.COLUMN_NAME, general.getName());
