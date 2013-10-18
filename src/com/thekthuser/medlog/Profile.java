@@ -98,6 +98,45 @@ public class Profile extends BaseActivity
         update.setVisibility(View.VISIBLE);
     }
 
+    public void togglePharmacy(View view) {
+        View pharmacy = findViewById(R.id.pharmacy);
+        if (pharmacy.getVisibility() == View.VISIBLE) {
+            pharmacy.setVisibility(View.GONE);
+        } else {
+            pharmacy.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void togglePharmacyEdit(View view) {
+        TextView name_show = (TextView) findViewById(R.id.pharmacy_name_show);
+        TextView name_edit = (TextView) findViewById(R.id.pharmacy_name_edit);
+        name_edit.setText(name_show.getText());
+        TextView address_show = (TextView) findViewById(R.id.pharmacy_address_show);
+        TextView address_edit = (TextView) findViewById(R.id.pharmacy_address_edit);
+        address_edit.setText(address_show.getText());
+        TextView phone_show = (TextView) findViewById(R.id.pharmacy_phone_show);
+        TextView phone_edit = (TextView) findViewById(R.id.pharmacy_phone_edit);
+        phone_edit.setText(phone_show.getText());
+        TextView hours_show = (TextView) findViewById(R.id.pharmacy_hours_show);
+        TextView hours_edit = (TextView) findViewById(R.id.pharmacy_hours_edit);
+        hours_edit.setText(hours_show.getText());
+
+
+        View edit = findViewById(R.id.edit_pharmacy_button);
+        View update = findViewById(R.id.update_pharmacy_button);
+
+        name_show.setVisibility(View.GONE);
+        name_edit.setVisibility(View.VISIBLE);
+        address_show.setVisibility(View.GONE);
+        address_edit.setVisibility(View.VISIBLE);
+        phone_show.setVisibility(View.GONE);
+        phone_edit.setVisibility(View.VISIBLE);
+        hours_show.setVisibility(View.GONE);
+        hours_edit.setVisibility(View.VISIBLE);
+        edit.setVisibility(View.GONE);
+        update.setVisibility(View.VISIBLE);
+    }
+
     public void updateSelf(View view) {
         EditText name = (EditText) findViewById(R.id.self_name_edit);
         EditText address = (EditText) findViewById(R.id.self_address_edit);
