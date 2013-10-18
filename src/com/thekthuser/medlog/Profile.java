@@ -15,9 +15,6 @@ import android.util.Log;
 public class Profile extends BaseActivity
 {
 
-    //private GeneralInfo self_general;
-    //should be private?
-
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -154,7 +151,29 @@ public class Profile extends BaseActivity
         EditText phone = (EditText) findViewById(R.id.prescriber_phone_edit);
         EditText specialty = (EditText) findViewById(R.id.prescriber_specialty_edit);
 
-        GeneralInfo pGeneral = new GeneralInfo(name.getText().toString(), address.getText().toString(), phone.getText().toString());
+        View vPrescriber = findViewById(R.id.prescriber);
+        Prescriber prescriber = (Prescriber) vPrescriber.getTag();
+
+        GeneralInfo pGeneral = prescriber.getGeneralInfo();
+        pGeneral.setName(name.getText().toString());
+        pGeneral.setAddress(address.getText().toString());
+        pGeneral.setPhone(phone.getText().toString());
+        prescriber.setSpecialty(specialty.getText().toString());
+        prescriber.setGeneralInfo(pGeneral);
+
+        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+        pAdapter.open();
+        pAdapter.addPrescriber(prescriber);
+        pAdapter.close();
+
+        finish();
+        startActivity(getIntent());
+        //temporary fix
+        
+        setContentView(R.layout.profile);
+        refreshProfile(findViewById(R.layout.profile));
+
+        /*GeneralInfo pGeneral = new GeneralInfo(name.getText().toString(), address.getText().toString(), phone.getText().toString());
         Prescriber prescriber = new Prescriber(specialty.getText().toString(), pGeneral);
 
         ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
@@ -167,7 +186,7 @@ public class Profile extends BaseActivity
         //above hides keyboard
 
         setContentView(R.layout.profile);
-        refreshProfile(findViewById(R.layout.profile));
+        refreshProfile(findViewById(R.layout.profile));*/
     }
 
     public void updateProfile(View view) {
@@ -185,20 +204,33 @@ public class Profile extends BaseActivity
         ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
         pAdapter.open();
         Self self = pAdapter.getSelf(1);
+        Prescriber prescriber = pAdapter.getPrescriber(1);
         pAdapter.close();
 
-        GeneralInfo self_general = self.getGeneralInfo();
+        GeneralInfo sGeneral = self.getGeneralInfo();
         View sView = findViewById(R.id.self);
-        Log.i("refreshprofile getSelf", "self id = " + Integer.toString(self.getId()));
+        //Log.i("refreshprofile getSelf", "self id = " + Integer.toString(self.getId()));
         sView.setTag(self);
+
+        GeneralInfo pGeneral = prescriber.getGeneralInfo();
+        View pView = findViewById(R.id.prescriber);
+        pView.setTag(prescriber);
 
         TextView self_name = (TextView) findViewById(R.id.self_name_show);
         TextView self_address = (TextView) findViewById(R.id.self_address_show);
         TextView self_phone = (TextView) findViewById(R.id.self_phone_show);
+        self_name.setText(sGeneral.getName());
+        self_address.setText(sGeneral.getAddress());
+        self_phone.setText(sGeneral.getPhone());
 
-        self_name.setText(self_general.getName());
-        self_address.setText(self_general.getAddress());
-        self_phone.setText(self_general.getPhone());
+        TextView prescriber_name = (TextView) findViewById(R.id.prescriber_name_show);
+        TextView prescriber_address = (TextView) findViewById(R.id.prescriber_address_show);
+        TextView prescriber_phone = (TextView) findViewById(R.id.prescriber_phone_show);
+        TextView prescriber_specialty = (TextView) findViewById(R.id.prescriber_specialty_show);
+        prescriber_name.setText(pGeneral.getName());
+        prescriber_address.setText(pGeneral.getAddress());
+        prescriber_phone.setText(pGeneral.getPhone());
+        prescriber_specialty.setText(prescriber.getSpecialty());
 
         /*ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
         pAdapter.open();
