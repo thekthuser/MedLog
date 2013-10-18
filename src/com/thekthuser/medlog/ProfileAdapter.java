@@ -207,4 +207,42 @@ public class ProfileAdapter {
         return self;
     }
 
+    public Pharmacy getPharmacy(int id) {
+        String[] projection = {
+            DatabaseHelper.COLUMN_ID,
+            DatabaseHelper.COLUMN_HOURS,
+            DatabaseHelper.COLUMN_GENERAL_INFO_ID
+        };
+        String selection = DatabaseHelper.COLUMN_ID + " = ?";
+        String sId = Integer.toString(id);
+        String[] selectionArgs = {
+            sId
+        };
+        String order = DatabaseHelper.COLUMN_ID + " DESC LIMIT 1";
+
+        Cursor cursor = dbr.query(
+            DatabaseHelper.TABLE_PHARMACY,
+            projection,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            order
+        );
+
+        Pharmacy pharmacy;
+        if (cursor.moveToFirst()) {
+            GeneralInfo pGeneral = getGeneralInfo(cursor.getInt(2));
+            pharmacy = new Pharmacy(cursor.getInt(0), cursor.getString(1), pGeneral);
+        } else {
+            GeneralInfo pGeneral = getGeneralInfo(-1);
+            pharmacy = new Pharmacy(-1, "Hours", pGeneral);
+        }
+        return pharmacy;
+    }
+
+
+
+
+
 }
