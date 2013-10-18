@@ -133,9 +133,16 @@ public class Profile extends BaseActivity
         pAdapter.addSelf(self);
         pAdapter.close();
 
-        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        /*InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        try {
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         //above hides keyboard
+        } catch (Exception e) {
+            throw new RuntimeException("hideSoftInputFromWindow", e);
+        }*/
+        finish();
+        startActivity(getIntent());
+        //temporary fix
 
         setContentView(R.layout.profile);
         refreshProfile(findViewById(R.layout.profile));
