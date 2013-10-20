@@ -54,6 +54,15 @@ public class Profile extends BaseActivity
         }
     }
 
+    public void toggleEmergency(View view) {
+        View emergency = findViewById(R.id.emergency);
+        if (emergency.getVisibility() == View.VISIBLE) {
+            emergency.setVisibility(View.GONE);
+        } else {
+            emergency.setVisibility(View.VISIBLE);
+        }
+    }
+
     public void toggleSelfEdit(View view) {
         TextView name_show = (TextView) findViewById(R.id.self_name_show);
         TextView name_edit = (TextView) findViewById(R.id.self_name_edit);
@@ -107,7 +116,6 @@ public class Profile extends BaseActivity
         update.setVisibility(View.VISIBLE);
     }
 
-
     public void togglePharmacyEdit(View view) {
         TextView name_show = (TextView) findViewById(R.id.pharmacy_name_show);
         TextView name_edit = (TextView) findViewById(R.id.pharmacy_name_edit);
@@ -134,6 +142,36 @@ public class Profile extends BaseActivity
         phone_edit.setVisibility(View.VISIBLE);
         hours_show.setVisibility(View.GONE);
         hours_edit.setVisibility(View.VISIBLE);
+        edit.setVisibility(View.GONE);
+        update.setVisibility(View.VISIBLE);
+    }
+
+    public void toggleEmergencyEdit(View view) {
+        TextView name_show = (TextView) findViewById(R.id.emergency_name_show);
+        TextView name_edit = (TextView) findViewById(R.id.emergency_name_edit);
+        name_edit.setText(name_show.getText());
+        TextView address_show = (TextView) findViewById(R.id.emergency_address_show);
+        TextView address_edit = (TextView) findViewById(R.id.emergency_address_edit);
+        address_edit.setText(address_show.getText());
+        TextView phone_show = (TextView) findViewById(R.id.emergency_phone_show);
+        TextView phone_edit = (TextView) findViewById(R.id.emergency_phone_edit);
+        phone_edit.setText(phone_show.getText());
+        TextView relation_show = (TextView) findViewById(R.id.emergency_relation_show);
+        TextView relation_edit = (TextView) findViewById(R.id.emergency_relation_edit);
+        relation_edit.setText(relation_show.getText());
+
+
+        View edit = findViewById(R.id.edit_emergency_button);
+        View update = findViewById(R.id.update_emergency_button);
+
+        name_show.setVisibility(View.GONE);
+        name_edit.setVisibility(View.VISIBLE);
+        address_show.setVisibility(View.GONE);
+        address_edit.setVisibility(View.VISIBLE);
+        phone_show.setVisibility(View.GONE);
+        phone_edit.setVisibility(View.VISIBLE);
+        relation_show.setVisibility(View.GONE);
+        relation_edit.setVisibility(View.VISIBLE);
         edit.setVisibility(View.GONE);
         update.setVisibility(View.VISIBLE);
     }
