@@ -10,7 +10,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //DATABASE_CREATE = "CREATE TABLE general_info (_id integer primary key autoincrement, name text, address text, phone text);";
 
     public static final String DATABASE_NAME = "medlog.db";
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 4;
 
     public static final String TABLE_GENERAL_INFO = "general_info";
     public static final String TABLE_SELF = "self";
@@ -26,6 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_HOURS = "hours";
     public static final String COLUMN_SPECIALTY = "specialty";
     public static final String COLUMN_GENERAL_INFO_ID = "general_info_id";
+    public static final String COLUMN_RELATION = "relation";
     //datetime
 
     public static final String GENERAL_INFO_CREATE = "CREATE TABLE "
@@ -62,6 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         + TABLE_EMERGENCY + "("
         + COLUMN_ID + " integer primary key autoincrement, "
         + COLUMN_GENERAL_INFO_ID + " integer, "
+        + COLUMN_RELATION + " text, "
         + "FOREIGN KEY (" + COLUMN_GENERAL_INFO_ID + ") REFERENCES "
         + TABLE_GENERAL_INFO + " (" + COLUMN_ID + "));";
 
