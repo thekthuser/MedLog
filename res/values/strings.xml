@@ -6,6 +6,7 @@
     <string name="self">Self:</string>
     <string name="prescriber">Prescriber:</string>
     <string name="pharmacy">Pharmacy:</string>
+    <string name="emergency">Emergency:</string>
 
     <string name="name">Name:</string>
     <string name="address">Address:</string>
@@ -13,6 +14,7 @@
 
     <string name="specialty">Specialty:</string>
     <string name="hours">Hours:</string>
+    <string name="relation">Relation:</string>
 
     <string name="update">Update</string>
     <string name="edit">Edit</string>
