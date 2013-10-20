@@ -45,6 +45,15 @@ public class Profile extends BaseActivity
         }
     }
 
+    public void togglePharmacy(View view) {
+        View pharmacy = findViewById(R.id.pharmacy);
+        if (pharmacy.getVisibility() == View.VISIBLE) {
+            pharmacy.setVisibility(View.GONE);
+        } else {
+            pharmacy.setVisibility(View.VISIBLE);
+        }
+    }
+
     public void toggleSelfEdit(View view) {
         TextView name_show = (TextView) findViewById(R.id.self_name_show);
         TextView name_edit = (TextView) findViewById(R.id.self_name_edit);
@@ -98,14 +107,6 @@ public class Profile extends BaseActivity
         update.setVisibility(View.VISIBLE);
     }
 
-    public void togglePharmacy(View view) {
-        View pharmacy = findViewById(R.id.pharmacy);
-        if (pharmacy.getVisibility() == View.VISIBLE) {
-            pharmacy.setVisibility(View.GONE);
-        } else {
-            pharmacy.setVisibility(View.VISIBLE);
-        }
-    }
 
     public void togglePharmacyEdit(View view) {
         TextView name_show = (TextView) findViewById(R.id.pharmacy_name_show);
@@ -228,6 +229,35 @@ public class Profile extends BaseActivity
         refreshProfile(findViewById(R.layout.profile));*/
     }
 
+    public void updatePharmacy(View view) {
+        EditText name = (EditText) findViewById(R.id.pharmacy_name_edit);
+        EditText address = (EditText) findViewById(R.id.pharmacy_address_edit);
+        EditText phone = (EditText) findViewById(R.id.pharmacy_phone_edit);
+        EditText hours = (EditText) findViewById(R.id.pharmacy_hours_edit);
+
+        View vPharmacy = findViewById(R.id.pharmacy);
+        Pharmacy pharmacy = (Pharmacy) vPharmacy.getTag();
+
+        GeneralInfo phGeneral = pharmacy.getGeneralInfo();
+        phGeneral.setName(name.getText().toString());
+        phGeneral.setAddress(address.getText().toString());
+        phGeneral.setPhone(phone.getText().toString());
+        pharmacy.setHours(hours.getText().toString());
+        pharmacy.setGeneralInfo(phGeneral);
+
+        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+        pAdapter.open();
+        pAdapter.addPharmacy(pharmacy);
+        pAdapter.close();
+
+        finish();
+        startActivity(getIntent());
+        //temporary fix
+        
+        setContentView(R.layout.profile);
+        refreshProfile(findViewById(R.layout.profile));
+    }
+
     public void updateProfile(View view) {
         //EditText name = (EditText) findViewById(R.id.edit_name);
         //EditText address = (EditText) findViewById(R.id.edit_address);
@@ -244,6 +274,7 @@ public class Profile extends BaseActivity
         pAdapter.open();
         Self self = pAdapter.getSelf(1);
         Prescriber prescriber = pAdapter.getPrescriber(1);
+        Pharmacy pharmacy = pAdapter.getPharmacy(1);
         pAdapter.close();
 
         GeneralInfo sGeneral = self.getGeneralInfo();
@@ -254,6 +285,10 @@ public class Profile extends BaseActivity
         GeneralInfo pGeneral = prescriber.getGeneralInfo();
         View pView = findViewById(R.id.prescriber);
         pView.setTag(prescriber);
+
+        GeneralInfo phGeneral = pharmacy.getGeneralInfo();
+        View phView = findViewById(R.id.pharmacy);
+        phView.setTag(pharmacy);
 
         TextView self_name = (TextView) findViewById(R.id.self_name_show);
         TextView self_address = (TextView) findViewById(R.id.self_address_show);
@@ -270,6 +305,15 @@ public class Profile extends BaseActivity
         prescriber_address.setText(pGeneral.getAddress());
         prescriber_phone.setText(pGeneral.getPhone());
         prescriber_specialty.setText(prescriber.getSpecialty());
+
+        TextView pharmacy_name = (TextView) findViewById(R.id.pharmacy_name_show);
+        TextView pharmacy_address = (TextView) findViewById(R.id.pharmacy_address_show);
+        TextView pharmacy_phone = (TextView) findViewById(R.id.pharmacy_phone_show);
+        TextView pharmacy_hours = (TextView) findViewById(R.id.pharmacy_hours_show);
+        pharmacy_name.setText(phGeneral.getName());
+        pharmacy_address.setText(phGeneral.getAddress());
+        pharmacy_phone.setText(phGeneral.getPhone());
+        pharmacy_hours.setText(pharmacy.getHours());
 
         /*ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
         pAdapter.open();
