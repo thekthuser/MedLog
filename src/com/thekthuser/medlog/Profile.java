@@ -296,15 +296,33 @@ public class Profile extends BaseActivity
         refreshProfile(findViewById(R.layout.profile));
     }
 
-    public void updateProfile(View view) {
-        //EditText name = (EditText) findViewById(R.id.edit_name);
-        //EditText address = (EditText) findViewById(R.id.edit_address);
-        //EditText phone = (EditText) findViewById(R.id.edit_phone);
-        //Toast.makeText(getApplicationContext(), name.getText() + " " + address.getText() + " " + phone.getText(), Toast.LENGTH_LONG).show();
+    public void updateEmergency(View view) {
+        EditText name = (EditText) findViewById(R.id.emergency_name_edit);
+        EditText address = (EditText) findViewById(R.id.emergency_address_edit);
+        EditText phone = (EditText) findViewById(R.id.emergency_phone_edit);
+        EditText relation = (EditText) findViewById(R.id.emergency_relation_edit);
 
-        //TextView outname = (TextView) findViewById(R.id.profile_name);
-        //outname.setText(name.getText());
-       // findViewById(R.id.profile_name).setText(name.getText());
+        View vEmergency = findViewById(R.id.emergency);
+        Emergency emergency = (Emergency) vEmergency.getTag();
+
+        GeneralInfo eGeneral = emergency.getGeneralInfo();
+        eGeneral.setName(name.getText().toString());
+        eGeneral.setAddress(address.getText().toString());
+        eGeneral.setPhone(phone.getText().toString());
+        emergency.setRelation(relation.getText().toString());
+        emergency.setGeneralInfo(eGeneral);
+
+        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+        pAdapter.open();
+        pAdapter.addEmergency(emergency);
+        pAdapter.close();
+
+        finish();
+        startActivity(getIntent());
+        //temporary fix is below needed?
+
+        /*setContentView(R.layout.profile);
+        refreshProfile(findViewById(R.layout.profile));*/
     }
 
     public void refreshProfile(View view) {
@@ -313,6 +331,7 @@ public class Profile extends BaseActivity
         Self self = pAdapter.getSelf(1);
         Prescriber prescriber = pAdapter.getPrescriber(1);
         Pharmacy pharmacy = pAdapter.getPharmacy(1);
+        Emergency emergency = pAdapter.getEmergency(1);
         pAdapter.close();
 
         GeneralInfo sGeneral = self.getGeneralInfo();
@@ -327,6 +346,10 @@ public class Profile extends BaseActivity
         GeneralInfo phGeneral = pharmacy.getGeneralInfo();
         View phView = findViewById(R.id.pharmacy);
         phView.setTag(pharmacy);
+
+        GeneralInfo eGeneral = emergency.getGeneralInfo();
+        View eView = findViewById(R.id.emergency);
+        eView.setTag(emergency);
 
         TextView self_name = (TextView) findViewById(R.id.self_name_show);
         TextView self_address = (TextView) findViewById(R.id.self_address_show);
@@ -352,6 +375,15 @@ public class Profile extends BaseActivity
         pharmacy_address.setText(phGeneral.getAddress());
         pharmacy_phone.setText(phGeneral.getPhone());
         pharmacy_hours.setText(pharmacy.getHours());
+ 
+        TextView emergency_name = (TextView) findViewById(R.id.emergency_name_show);
+        TextView emergency_address = (TextView) findViewById(R.id.emergency_address_show);
+        TextView emergency_phone = (TextView) findViewById(R.id.emergency_phone_show);
+        TextView emergency_relation = (TextView) findViewById(R.id.emergency_relation_show);
+        emergency_name.setText(eGeneral.getName());
+        emergency_address.setText(eGeneral.getAddress());
+        emergency_phone.setText(eGeneral.getPhone());
+        emergency_relation.setText(emergency.getRelation());
 
         /*ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
         pAdapter.open();

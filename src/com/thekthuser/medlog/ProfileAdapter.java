@@ -95,6 +95,24 @@ public class ProfileAdapter {
         }
     }
 
+    public void addEmergency(Emergency emergency) {
+        long general_id = addGeneralInfo(emergency.getGeneralInfo());
+        ContentValues cValues = new ContentValues();
+        cValues.put(DatabaseHelper.COLUMN_RELATION, emergency.getRelation());
+        cValues.put(DatabaseHelper.COLUMN_GENERAL_INFO_ID, general_id);
+
+        if (emergency.getId() != -1) {
+            String sId = Integer.toString(emergency.getId());
+            String where = DatabaseHelper.COLUMN_ID + " = ?";
+            String[] args = {
+                sId
+            };
+            db.update(DatabaseHelper.TABLE_EMERGENCY, cValues, where, args);
+        } else {
+            db.insert(DatabaseHelper.TABLE_EMERGENCY, null, cValues);
+        }
+    }
+
     public long addGeneralInfo(GeneralInfo general) {
         ContentValues cValues = new ContentValues();
         cValues.put(DatabaseHelper.COLUMN_NAME, general.getName());
@@ -259,8 +277,37 @@ public class ProfileAdapter {
         return pharmacy;
     }
 
+    public Emergency getEmergency(int id) {
+        String[] projection = {
+            DatabaseHelper.COLUMN_ID,
+            DatabaseHelper.COLUMN_RELATION,
+            DatabaseHelper.COLUMN_GENERAL_INFO_ID
+        };
+        String selection = DatabaseHelper.COLUMN_ID + " = ?";
+        String sId = Integer.toString(id);
+        String[] selectionArgs = {
+            sId
+        };
+        String order = DatabaseHelper.COLUMN_ID + " DESC LIMIT 1";
 
+        Cursor cursor = dbr.query(
+            DatabaseHelper.TABLE_EMERGENCY,
+            projection,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            order
+        );
 
-
-
+        Emergency emergency;
+        if (cursor.moveToFirst()) {
+            GeneralInfo phGeneral = getGeneralInfo(cursor.getInt(2));
+            emergency = new Emergency(cursor.getInt(0), cursor.getString(1), phGeneral);
+        } else {
+            GeneralInfo phGeneral = getGeneralInfo(-1);
+            emergency = new Emergency(-1, "Relation", phGeneral);
+        }
+        return emergency;
+    }
 }
