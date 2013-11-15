@@ -2,6 +2,8 @@
 <resources>
     <string name="app_name">MedLog</string>
     <string name="menu_profile">Profile</string>
+    <string name="menu_manage">Manage</string>
+
     <string name="profile">Profile:</string>
     <string name="self">Self:</string>
     <string name="prescriber">Prescriber:</string>

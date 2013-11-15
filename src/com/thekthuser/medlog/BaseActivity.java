@@ -31,6 +31,9 @@ public class BaseActivity extends Activity
             case R.id.menu_profile:
                 profile();
                 return true;
+            case R.id.menu_manage:
+                manage();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -40,5 +43,10 @@ public class BaseActivity extends Activity
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
         }
+
+    public void manage() {
+        Intent intent = new Intent(this, Manage.class);
+        startActivity(intent);
+    }
 
 }
