@@ -18,6 +18,9 @@
     <string name="hours">Hours:</string>
     <string name="relation">Relation:</string>
 
+    <string name="scientific_name">Scientific Name</string>
+    <string name="brand_name">Brand Name</string>
+
     <string name="update">Update</string>
     <string name="edit">Edit</string>
 </resources>
