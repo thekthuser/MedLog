@@ -6,8 +6,16 @@ public class Prescription {
     private String pill_dosage;
     private String dosage_taken;
 
-    public Prescription(int id) {
+    public Prescription(int id, String pill_dosage, String dosage_taken) {
         this.id = id;
+        this.pill_dosage = pill_dosage;
+        this.dosage_taken = dosage_taken;
+    }
+
+    public Prescription(String pill_dosage, String dosage_taken) {
+        this.id = -1;
+        this.pill_dosage = pill_dosage;
+        this.dosage_taken = dosage_taken;
     }
 
     public int getId() {
@@ -16,5 +24,21 @@ public class Prescription {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getPillDosage() {
+        return pill_dosage;
+    }
+
+    public void setPillDosage(String pill_dosage) {
+        this.pill_dosage = pill_dosage;
+    }
+
+    public String getDosageTaken() {
+        return dosage_taken;
+    }
+
+    public void setDosageTaken(String dosage_taken) {
+        this.dosage_taken = dosage_taken;
     }
 }
