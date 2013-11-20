@@ -5,6 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.SQLException;
 import android.content.ContentValues;
 import android.database.Cursor;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+
+import android.util.Log;
 
 public class ManageAdapter {
 
@@ -32,7 +37,8 @@ public class ManageAdapter {
         ContentValues cValues = new ContentValues();
         cValues.put(DatabaseHelper.COLUMN_SCIENTIFIC_NAME, medication.getScientificName());
         cValues.put(DatabaseHelper.COLUMN_BRAND_NAME, medication.getBrandName());
-        if (medication.getId() != 1) {
+        Log.i("AAAAAAAAAAAAAAAA", medication.getBrandName());
+        if (medication.getId() != -1) {
             String sId = Integer.toString(medication.getId());
             String where = DatabaseHelper.COLUMN_ID + " = ?";
             String[] args = {
@@ -75,6 +81,36 @@ public class ManageAdapter {
             medication = new Medication(-1, "Scientific Name", "Brand Name");
         }
         return medication;
+    }
+
+    public List getMedicationList() {
+        String[] projection = {
+            DatabaseHelper.COLUMN_ID,
+            DatabaseHelper.COLUMN_SCIENTIFIC_NAME,
+            DatabaseHelper.COLUMN_BRAND_NAME
+        };
+        String order = DatabaseHelper.COLUMN_ID + " ASC";
+
+        Cursor cursor = dbr.query(
+            DatabaseHelper.TABLE_MEDICATION,
+            projection,
+            null,
+            null,
+            null,
+            null,
+            order
+        );
+
+        ArrayList meds = new ArrayList();
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap m = new HashMap();
+                m.put("Scientific Name", cursor.getString(1));
+                m.put("Brand Name", cursor.getString(2));
+                meds.add(m);
+            } while (cursor.moveToNext());
+        }
+        return meds;
     }
 
 

@@ -34,7 +34,7 @@ public class Manage extends BaseListActivity {
                     createGroupList(),
                     R.layout.manage_medication,
                     new String[] {"Scientific Name", "Brand Name"},
-                    new int[] {R.id.scientific_name, R.id.brand_name},
+                    new int[] {R.id.display_scientific_name, R.id.display_brand_name},
                     createChildList(),
                     R.layout.manage_prescription,
                     new String[] {"Sub Item"},
@@ -48,19 +48,26 @@ public class Manage extends BaseListActivity {
     }
 
     private List createGroupList() {
-        ArrayList result = new ArrayList();
+        /*ArrayList result = new ArrayList();
         for(int i = 0; i < 4; i++) {
             HashMap m = new HashMap();
                 m.put("Scientific Name", "Scientific Name" + Integer.toString(i));
                 m.put("Brand Name", "Brand Name" + Integer.toString(i));
                 result.add(m);
         }
-        return (List) result;
+        return (List) result;*/
+        ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
+        mAdapter.open();
+        List meds = mAdapter.getMedicationList();
+        mAdapter.close();
+
+        return meds;
+
     }
 
     private List createChildList() {
         ArrayList result = new ArrayList();
-        for(int i = 0; i < 4; i++) {
+        /*for(int i = 0; i < 4; i++) {
             ArrayList secList = new ArrayList();
             for(int n = 0; n < 3; n++) {
                 HashMap child = new HashMap();
@@ -68,68 +75,10 @@ public class Manage extends BaseListActivity {
             secList.add( child );
             }
         result.add(secList);
-        }
+        }*/
         return result;
     }
 
-    /*ArrayList<String> groupItem = new ArrayList<String>();
-    ArrayList<String> childItem = new ArrayList<String>();
-    groupItem.add("ONE");
-    groupItem.add("TWO");
-    groupItem.add("THREE");
-    
-    ArrayList<String> child = new ArrayList<String>();
-    child.add("1");
-    child.add("2");
-    child.add("3");
-    childItem.add(child);*/
-
-
-    /*ArrayList<String> groupItem = new ArrayList<String>();
-    ArrayList<Object> childItem = new ArrayList<Object>();
-
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);*/
-        //setContentView(R.layout.manage);
-        /*String[] values = new String[] { "one", "two", "three" };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-            R.layout.manage_rowlayout, R.id.test, values);
-        setListAdapter(adapter);*/
-        /*ExpandableListView xList = getExpandableListView();
-        xList.setDividerHeight(2);
-        xList.setGroupIndicator(null);
-        xList.setClickable(true);
-        setGroupData();
-        setChildGroupData();
-
-        ManageExpandableListAdapter  mAdapter = new ManageExpandableListAdapter(groupItem, childItem);
-        mAdapter.setInflater((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE), this);
-        getExpandableListView().setAdapter(mAdapter);
-        xList.setOnChildClickListener(this);
-    }
-
-    public void setGroupData() {
-        groupItem.add("ONE");
-        groupItem.add("TWO");
-        groupItem.add("THREE");
-    }
-    public void setChildGroupData() {
-        ArrayList<String> child = new ArrayList<String>();
-        child.add("1");
-        child.add("2");
-        child.add("3");
-        childItem.add(child);
-    }
-    @Override
-    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-        Toast.makeText(getBaseContext(), "Clicked", Toast.LENGTH_LONG).show();
-        return true;
-    }
-
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        String item = (String) getListAdapter().getItem(position);
-        Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
-    }*/
 
     public void toggle_new_med(View view) {
         View new_med = findViewById(R.id.new_med);
@@ -144,10 +93,19 @@ public class Manage extends BaseListActivity {
     }
 
     public void update_med(View view) {
-        EditText brand = (EditText) view.findViewById(R.id.brand_name);
-        EditText scientific = (EditText) view.findViewById(R.id.scientific_name);
+        EditText scientific = (EditText) findViewById(R.id.scientific_name);
+        EditText brand = (EditText) findViewById(R.id.brand_name);
+        Medication med = new Medication(scientific.getText().toString(), brand.getText().toString());
 
-        toggle_new_med(view);
+        ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
+        mAdapter.open();
+        mAdapter.addMedication(med);
+        mAdapter.close();
+        
+        //toggle_new_med(view);
+        finish();
+        startActivity(getIntent());
+
     }
 
 }

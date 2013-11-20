@@ -4,15 +4,16 @@
     android:orientation="horizontal"
     android:layout_height="fill_parent" >
     <TextView
-        android:id="@+id/scientific_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/scientific_name"
-    />
-    <TextView
-        android:id="@+id/brand_name"
+        android:id="@+id/display_brand_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/brand_name"
+    />
+    <TextView
+        android:id="@+id/display_scientific_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/scientific_name"
+        android:gravity="right"
     />
 </LinearLayout>
