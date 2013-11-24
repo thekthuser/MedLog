@@ -28,17 +28,22 @@ public class Manage extends BaseListActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.manage);
 
+            ArrayList meds = createGroupList();
+            ArrayList prescriptions = createChildList(meds);
             SimpleExpandableListAdapter xList = 
                 new SimpleExpandableListAdapter(
                     this,
-                    createGroupList(),
+                    //createGroupList(),
+                    meds,
                     R.layout.manage_medication,
                     new String[] {"Scientific Name", "Brand Name"},
                     new int[] {R.id.display_scientific_name, R.id.display_brand_name},
-                    createChildList(),
+                    //createChildList(),
+                    prescriptions,
                     R.layout.manage_prescription,
-                    new String[] {"Sub Item"},
-                    new int[] {R.id.prescription}
+                    //new String[] {"Sub Item"},
+                    new String[] {"Pill Dosage"},
+                    new int[] {R.id.display_prescription}
                 );
             getExpandableListView().setGroupIndicator(null);
             setListAdapter(xList);
@@ -47,7 +52,7 @@ public class Manage extends BaseListActivity {
         }
     }
 
-    private List createGroupList() {
+    private ArrayList createGroupList() {
         /*ArrayList result = new ArrayList();
         for(int i = 0; i < 4; i++) {
             HashMap m = new HashMap();
@@ -58,16 +63,29 @@ public class Manage extends BaseListActivity {
         return (List) result;*/
         ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
         mAdapter.open();
-        List meds = mAdapter.getMedicationList();
+        ArrayList meds = mAdapter.getMedicationList();
         mAdapter.close();
 
         return meds;
 
     }
 
-    private List createChildList() {
-        ArrayList result = new ArrayList();
-        /*for(int i = 0; i < 4; i++) {
+    private ArrayList createChildList(ArrayList meds) {
+        /*ArrayList result = new ArrayList();
+        for (int i = 0; i < meds.size(); i++) {
+            ArrayList childList = new ArrayList();
+            Medication asdf = (Medication) meds.get(i);
+            int aaa = asdf.getId();
+        ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
+        mAdapter.open();
+            childList = mAdapter.getPrescriptionList(aaa);//asdf.getId());
+        mAdapter.close();
+            result.add(childList);
+        }
+        return result;/
+            
+        /*ArrayList result = new ArrayList();
+        for(int i = 0; i < 4; i++) {
             ArrayList secList = new ArrayList();
             for(int n = 0; n < 3; n++) {
                 HashMap child = new HashMap();
@@ -75,8 +93,24 @@ public class Manage extends BaseListActivity {
             secList.add( child );
             }
         result.add(secList);
-        }*/
+        }
+        return result;*/
+
+        ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
+        mAdapter.open();
+        ArrayList result = new ArrayList();
+        for (int i = 0; i < meds.size(); i++) {
+            ArrayList test = mAdapter.getPrescriptionList(i);
+            result.add(test);
+        }
+        mAdapter.close();
         return result;
+
+        /*ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
+        mAdapter.open();
+        List prescriptions = mAdapter.getPrescriptionList(count);
+        mAdapter.close();
+        return prescriptions;*/
     }
 
 

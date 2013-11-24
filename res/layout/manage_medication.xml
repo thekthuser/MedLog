@@ -7,13 +7,21 @@
         android:id="@+id/display_brand_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="@string/brand_name"
     />
     <TextView
         android:id="@+id/display_scientific_name"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/scientific_name"
+        android:layout_weight="1"
+        android:gravity="right"
+    />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle_plus_12"
         android:gravity="right"
     />
 </LinearLayout>

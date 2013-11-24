@@ -83,7 +83,7 @@ public class ManageAdapter {
         return medication;
     }
 
-    public List getMedicationList() {
+    public ArrayList getMedicationList() {
         String[] projection = {
             DatabaseHelper.COLUMN_ID,
             DatabaseHelper.COLUMN_SCIENTIFIC_NAME,
@@ -111,6 +111,109 @@ public class ManageAdapter {
             } while (cursor.moveToNext());
         }
         return meds;
+    }
+
+    public void addPrescription(Prescription prescription) {
+        ContentValues cValues = new ContentValues();
+        cValues.put(DatabaseHelper.COLUMN_PILL_DOSAGE, prescription.getPillDosage());
+        cValues.put(DatabaseHelper.COLUMN_DOSAGE_TAKEN, prescription.getDosageTaken());
+        cValues.put(DatabaseHelper.COLUMN_MEDICATION_ID, prescription.getMedicationId());
+
+        if (prescription.getId() != -1) {
+            String sId = Integer.toString(prescription.getId());
+            String where = DatabaseHelper.COLUMN_ID + " = ?";
+            String[] args = {
+                sId
+            };
+            db.update(DatabaseHelper.TABLE_MEDICATION, cValues, where, args);
+        } else {
+            db.insert(DatabaseHelper.TABLE_MEDICATION, null, cValues);
+        }
+    }
+
+    public Prescription getPrescription(int id) {
+        String[] projection = {
+            DatabaseHelper.COLUMN_ID,
+            DatabaseHelper.COLUMN_MEDICATION_ID,
+            DatabaseHelper.COLUMN_PILL_DOSAGE,
+            DatabaseHelper.COLUMN_DOSAGE_TAKEN
+        };
+        String selection = DatabaseHelper.COLUMN_ID + " = ?";
+        String sId = Integer.toString(id);
+        String[] selectionArgs = {
+            sId
+        };
+        String order = DatabaseHelper.COLUMN_ID + " DESC LIMIT 1";
+
+        Cursor cursor = dbr.query(
+            DatabaseHelper.TABLE_MEDICATION,
+            projection,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            order
+        );
+
+        Prescription prescription;
+        if (cursor.moveToFirst()) {
+            prescription = new Prescription(cursor.getInt(0), cursor.getInt(1), 
+            cursor.getString(2), cursor.getString(3));
+        } else {
+            //not sure about this
+            prescription = new Prescription(-1, -1, "Pill Dosage", "Dosage Taken");
+        }
+        return prescription;
+    }
+
+    public ArrayList getPrescriptionList(int medId) {
+        String[] projection = {
+            DatabaseHelper.COLUMN_ID,
+            DatabaseHelper.COLUMN_MEDICATION_ID,
+            DatabaseHelper.COLUMN_PILL_DOSAGE,
+            DatabaseHelper.COLUMN_DOSAGE_TAKEN
+        };
+        String order = DatabaseHelper.COLUMN_ID + " ASC";
+
+        Cursor cursor = dbr.query(
+            DatabaseHelper.TABLE_PRESCRIPTION,
+            projection,
+            null,
+            null,
+            null,
+            null,
+            order
+        );
+
+        ArrayList result = new ArrayList();
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap m = new HashMap();
+                m.put("Pill Dosage", cursor.getString(2));
+                m.put("Dosage Taken", cursor.getString(3));
+                result.add(m);
+            } while (cursor.moveToNext());
+        }
+        return result;
+
+
+        /*ArrayList secList = new ArrayList();
+        for (int i = 0; i < count; i++) {
+            if (cursor.moveToFirst()) {
+                do {
+                    HashMap m = new HashMap();
+                    m.put("Pill Dosage", cursor.getString(2));
+                    m.put("Dosage Taken", cursor.getString(3));
+                    secList.add(m);
+                } while (cursor.moveToNext());
+            }
+        }
+        return secList;*/
+        /*ArrayList test = new ArrayList();
+        HashMap t = new HashMap();
+        t.put("Pill Dosage", "dosage");
+        test.add(t);
+        return test;*/
     }
 
 
