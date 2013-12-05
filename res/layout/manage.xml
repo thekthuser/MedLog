@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="Add Medication"
-            android:onClick="update_med" />
+            android:onClick="updateMed" />
 
     </LinearLayout>
         <Button
@@ -49,6 +49,6 @@
             android:layout_gravity="right"
             android:text="New Medication"
             android:id="@+id/toggle_new_med"
-            android:onClick="toggle_new_med" />
+            android:onClick="toggleNewMed" />
 
 </LinearLayout>

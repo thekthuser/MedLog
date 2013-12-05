@@ -35,17 +35,20 @@ public class Manage extends BaseListActivity {
                     this,
                     //createGroupList(),
                     meds,
+                    //R.layout.manage_medication_expanded,
                     R.layout.manage_medication,
                     new String[] {"Scientific Name", "Brand Name"},
                     new int[] {R.id.display_scientific_name, R.id.display_brand_name},
                     //createChildList(),
                     prescriptions,
                     R.layout.manage_prescription,
+                    //R.layout.manage_prescription_last,
                     //new String[] {"Sub Item"},
-                    new String[] {"Pill Dosage"},
+                    new String[] {"Pill Dosage", "Dosage Taken"},
                     new int[] {R.id.display_prescription}
                 );
             getExpandableListView().setGroupIndicator(null);
+            getExpandableListView().setOnChildClickListener(this);
             setListAdapter(xList);
         } catch (Exception e) {
             System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEE " + e.getMessage());
@@ -82,21 +85,23 @@ public class Manage extends BaseListActivity {
         mAdapter.close();
             result.add(childList);
         }
-        return result;/
+        return result;*/
             
-        /*ArrayList result = new ArrayList();
+        ArrayList result = new ArrayList();
         for(int i = 0; i < 4; i++) {
             ArrayList secList = new ArrayList();
             for(int n = 0; n < 3; n++) {
                 HashMap child = new HashMap();
-                child.put("Sub Item", "Sub" + Integer.toString(n));
+                //child.put("Sub Item", "Sub" + Integer.toString(n));
+                child.put("Pill Dosage", "pill dosage");
+                child.put("Dosage Taken", "dosage taken");
             secList.add( child );
             }
         result.add(secList);
         }
-        return result;*/
+        return result;
 
-        ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
+        /*ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
         mAdapter.open();
         ArrayList result = new ArrayList();
         for (int i = 0; i < meds.size(); i++) {
@@ -104,7 +109,7 @@ public class Manage extends BaseListActivity {
             result.add(test);
         }
         mAdapter.close();
-        return result;
+        return result;*/
 
         /*ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
         mAdapter.open();
@@ -113,8 +118,24 @@ public class Manage extends BaseListActivity {
         return prescriptions;*/
     }
 
+    public void togglePrescriberEdit(View view) {
+        /*ExpandableListView ev = getExpandableListView();
+        long evid = ev.getSelectedPosition();
+        Toast.makeText(getBaseContext(), Long.toString(evid), Toast.LENGTH_LONG).show();*/
+        /*View newPres = findViewById(R.id.test);
+        if (newPres.getVisibility() == View.VISIBLE) {
+            newPres.setVisibility(View.GONE);
+        } else {
+            newPres.setVisibility(View.VISIBLE);
+        }*/
+    }
+    @Override
+    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+        Toast.makeText(getBaseContext(), Integer.toString(groupPosition), Toast.LENGTH_LONG).show();
+        return true;
+    }
 
-    public void toggle_new_med(View view) {
+    public void toggleNewMed(View view) {
         View new_med = findViewById(R.id.new_med);
         Button new_med_button = (Button) findViewById(R.id.toggle_new_med);
         if (new_med.getVisibility() == View.VISIBLE) {
@@ -126,7 +147,7 @@ public class Manage extends BaseListActivity {
         }
     }
 
-    public void update_med(View view) {
+    public void updateMed(View view) {
         EditText scientific = (EditText) findViewById(R.id.scientific_name);
         EditText brand = (EditText) findViewById(R.id.brand_name);
         Medication med = new Medication(scientific.getText().toString(), brand.getText().toString());
