@@ -45,7 +45,7 @@ public class Manage extends BaseListActivity {
                     //R.layout.manage_prescription_last,
                     //new String[] {"Sub Item"},
                     new String[] {"Pill Dosage", "Dosage Taken"},
-                    new int[] {R.id.display_prescription}
+                    new int[] {R.id.display_pill_dosage}
                 );
             getExpandableListView().setGroupIndicator(null);
             getExpandableListView().setOnChildClickListener(this);
