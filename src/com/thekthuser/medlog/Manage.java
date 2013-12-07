@@ -21,14 +21,33 @@ import android.widget.SimpleExpandableListAdapter;
 import java.util.HashMap;
 import java.util.List;
 
+import com.thekthuser.medlog.ManageExpandableListAdapter;
+
+import android.util.Log;
+
 public class Manage extends BaseListActivity {
+    private ManageExpandableListAdapter ExpAdapter;
+    private ArrayList<Medication> ExpListItems;
+    private ExpandableListView ExpList;
 
     public void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.manage);
+            ExpList = (ExpandableListView) findViewById(android.R.id.list);
+            Log.i("AAAAAAAAAAAAAAAAAAA", "create explist");
+            ExpListItems = dummy_data();
+            Log.i("AAAAAAAAAAAAAAAAAA", "create dummy_data");
+            ExpAdapter = new ManageExpandableListAdapter(Manage.this, 
+            ExpListItems);
+            Log.i("AAAAAAAAAAAAAAAAAA", "create explist adapter");
+            ExpList.setAdapter(ExpAdapter);
+            Log.i("AAAAAAAAAAAAAAAAAA", "set adapter");
+        } catch (Exception e) {
+            Log.i("EEEEEEEEEEEEEEEEE", e.getMessage());
+        }
 
-            ArrayList meds = createGroupList();
+            /*ArrayList meds = createGroupList();
             ArrayList prescriptions = createChildList(meds);
             SimpleExpandableListAdapter xList = 
                 new SimpleExpandableListAdapter(
@@ -52,7 +71,49 @@ public class Manage extends BaseListActivity {
             setListAdapter(xList);
         } catch (Exception e) {
             System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEE " + e.getMessage());
+        }*/
+    }
+
+    public ArrayList<Medication> dummy_data() {
+        /*ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
+        mAdapter.open();
+        ArrayList meds = mAdapter.getMedicationList();
+
+        for (int i = 0; i < meds.size(); i++) {
+            ArrayList<Prescription> pres = new ArrayList();
+            for (int j = 0; j < 3; j++) {
+                Prescription child = new Prescription(i, "pill", "dosage");
+                pres.add(child);
+            }
+            meds.add(pres);
         }
+        mAdapter.close();
+        return meds;*/
+        ArrayList<Medication> meds = new ArrayList<Medication>();
+        ArrayList<Prescription> pres = new ArrayList<Prescription>();
+
+        Medication group1 = new Medication(1, "sci", "bra");
+        Prescription child1 = new Prescription(1, 1, "pill", "dosage");
+        pres.add(child1);
+        Prescription child2 = new Prescription(1, 2, "pill2", "dosage2");
+        pres.add(child2);
+        group1.setPrescriptions(pres);
+
+        //ArrayList<Prescription> pres = new ArrayList<Prescription>();
+        pres.clear();
+        Medication group2 = new Medication(1, "sci", "bra");
+        Prescription child21 = new Prescription(1, 1, "pill", "dosage");
+        pres.add(child21);
+        Prescription child22 = new Prescription(1, 2, "pill2", "dosage2");
+        pres.add(child22);
+        group2.setPrescriptions(pres);
+        
+
+        meds.add(group1);
+        meds.add(group2);
+
+        return meds;
+
     }
 
     private ArrayList createGroupList() {
@@ -129,6 +190,7 @@ public class Manage extends BaseListActivity {
             newPres.setVisibility(View.VISIBLE);
         }*/
     }
+
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
         Toast.makeText(getBaseContext(), Integer.toString(groupPosition), Toast.LENGTH_LONG).show();

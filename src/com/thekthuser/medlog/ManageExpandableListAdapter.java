@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 public class ManageExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
-            //ArrayList<Class> groups
     private ArrayList<Medication> groups;
 
     public ManageExpandableListAdapter(Context context, 
@@ -89,6 +88,9 @@ public class ManageExpandableListAdapter extends BaseExpandableListAdapter {
         view.findViewById(R.id.display_brand_name);
         TextView scientific_name = (TextView)
         view.findViewById(R.id.display_scientific_name);
+
+        brand_name.setText(group.getBrandName());
+        scientific_name.setText(group.getScientificName());
 
         return view;
     }
