@@ -83,7 +83,7 @@ public class ManageAdapter {
         return medication;
     }
 
-    public ArrayList getMedicationList() {
+    public ArrayList<Medication> getMedicationList() {
         String[] projection = {
             DatabaseHelper.COLUMN_ID,
             DatabaseHelper.COLUMN_SCIENTIFIC_NAME,
@@ -101,12 +101,15 @@ public class ManageAdapter {
             order
         );
 
-        ArrayList meds = new ArrayList();
+        ArrayList<Medication> meds = new ArrayList<Medication>();
         if (cursor.moveToFirst()) {
             do {
-                HashMap m = new HashMap();
+                /*HashMap m = new HashMap();
                 m.put("Scientific Name", cursor.getString(1));
                 m.put("Brand Name", cursor.getString(2));
+                meds.add(m);*/
+                Medication m = new Medication(cursor.getInt(0), 
+                cursor.getString(1), cursor.getString(2));
                 meds.add(m);
             } while (cursor.moveToNext());
         }
@@ -166,7 +169,7 @@ public class ManageAdapter {
         return prescription;
     }
 
-    public ArrayList getPrescriptionList(int medId) {
+    public ArrayList<Prescription> getPrescriptionList(int medId) {
         String[] projection = {
             DatabaseHelper.COLUMN_ID,
             DatabaseHelper.COLUMN_MEDICATION_ID,
@@ -185,16 +188,19 @@ public class ManageAdapter {
             order
         );
 
-        ArrayList result = new ArrayList();
+        ArrayList<Prescription> pres = new ArrayList<Prescription>();
         if (cursor.moveToFirst()) {
             do {
-                HashMap m = new HashMap();
+                /*HashMap m = new HashMap();
                 m.put("Pill Dosage", cursor.getString(2));
                 m.put("Dosage Taken", cursor.getString(3));
-                result.add(m);
+                result.add(m);*/
+                Prescription p = new Prescription(cursor.getInt(0), 
+                cursor.getInt(1), cursor.getString(2), cursor.getString(3));
+                pres.add(p);
             } while (cursor.moveToNext());
         }
-        return result;
+        return pres;
 
 
         /*ArrayList secList = new ArrayList();

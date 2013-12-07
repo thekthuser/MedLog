@@ -28,7 +28,7 @@
             android:src="@drawable/circle_plus_12"
             android:gravity="right"
             android:padding="4dp"
-            android:onClick="togglePrescriberEdit"
+            android:onClick="togglePrescriptionEdit"
             android:clickable="true"
         />
     </LinearLayout>

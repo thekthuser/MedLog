@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.thekthuser.medlog.ManageExpandableListAdapter;
+import java.util.Iterator;
 
 import android.util.Log;
 
@@ -36,7 +37,8 @@ public class Manage extends BaseListActivity {
             setContentView(R.layout.manage);
             ExpList = (ExpandableListView) findViewById(android.R.id.list);
             Log.i("AAAAAAAAAAAAAAAAAAA", "create explist");
-            ExpListItems = dummy_data();
+            //ExpListItems = dummy_data();
+            ExpListItems = fetch_data();
             Log.i("AAAAAAAAAAAAAAAAAA", "create dummy_data");
             ExpAdapter = new ManageExpandableListAdapter(Manage.this, 
             ExpListItems);
@@ -74,6 +76,27 @@ public class Manage extends BaseListActivity {
         }*/
     }
 
+    public ArrayList<Medication> fetch_data(){
+        ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
+        mAdapter.open();
+        ArrayList<Medication> meds = mAdapter.getMedicationList();
+
+        Iterator<Medication> iterator = meds.iterator();
+        while (iterator.hasNext()) {
+            Medication m = iterator.next();
+            ArrayList<Prescription> pres = mAdapter.getPrescriptionList(m.getId());
+            m.setPrescriptions(pres);
+        }
+        /*for (int i = 0; i < meds.size(); i++) {
+            //ArrayList<Prescription> pres = mAdapter.getPrescriptionList();
+            //meds.add(pres);
+        }*/
+
+        mAdapter.close();
+
+        return meds;
+    }
+
     public ArrayList<Medication> dummy_data() {
         /*ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
         mAdapter.open();
@@ -101,7 +124,7 @@ public class Manage extends BaseListActivity {
 
         //ArrayList<Prescription> pres = new ArrayList<Prescription>();
         pres.clear();
-        Medication group2 = new Medication(1, "sci", "bra");
+        Medication group2 = new Medication(1, "sci2", "bra2");
         Prescription child21 = new Prescription(1, 1, "pill", "dosage");
         pres.add(child21);
         Prescription child22 = new Prescription(1, 2, "pill2", "dosage2");
