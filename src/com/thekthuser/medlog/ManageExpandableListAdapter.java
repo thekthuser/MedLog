@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.widget.BaseExpandableListAdapter;
 import com.thekthuser.medlog.Medication;
 import android.widget.TextView;
+import android.widget.ImageView;
+
+import android.util.Log;
 
 public class ManageExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
@@ -86,10 +89,17 @@ public class ManageExpandableListAdapter extends BaseExpandableListAdapter {
 
         TextView brand_name = (TextView) 
         view.findViewById(R.id.display_brand_name);
-        TextView scientific_name = (TextView)
+        TextView scientific_name = (TextView) 
+        view.findViewById(R.id.display_scientific_name);
+        ImageView button = (ImageView) view.findViewById(R.id.toggleNewPrescription);
 
         brand_name.setText(group.getBrandName());
         scientific_name.setText(group.getScientificName());
+        //Log.i("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", Integer.toString(groupPosition));
+        button.setTag(groupPosition);
+        /*if (button == null) {
+            brand_name.setText("null");
+        }*/
 
         return view;
     }

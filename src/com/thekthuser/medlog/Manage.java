@@ -202,7 +202,7 @@ public class Manage extends BaseListActivity {
         return prescriptions;*/
     }
 
-    public void togglePrescriberEdit(View view) {
+    public void togglePrescriptionEdit(View view) {
         /*ExpandableListView ev = getExpandableListView();
         long evid = ev.getSelectedPosition();
         Toast.makeText(getBaseContext(), Long.toString(evid), Toast.LENGTH_LONG).show();*/
@@ -212,6 +212,8 @@ public class Manage extends BaseListActivity {
         } else {
             newPres.setVisibility(View.VISIBLE);
         }*/
+        String groupPosition = view.getTag().toString();
+        Toast.makeText(getBaseContext(), groupPosition, Toast.LENGTH_LONG).show();
     }
 
     @Override
