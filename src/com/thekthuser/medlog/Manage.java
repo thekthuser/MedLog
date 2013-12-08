@@ -96,7 +96,7 @@ public class Manage extends BaseListActivity {
 
     }
 
-    public void togglePrescriptionEdit(View view) {
+    public void toggleNewPrescription(View view) {
         /*ExpandableListView ev = getExpandableListView();
         long evid = ev.getSelectedPosition();
         Toast.makeText(getBaseContext(), Long.toString(evid), Toast.LENGTH_LONG).show();*/

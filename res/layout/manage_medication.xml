@@ -33,21 +33,4 @@
             android:clickable="true"
         />
     </LinearLayout>
-    <!--<LinearLayout
-        android:layout_width="fill_parent"
-        android:orientation="horizontal"
-        android:layout_height="fill_parent"
-        android:visibility="gone"
-        android:id="@+id/test">
-        <EditText
-            android:hint="Pill Dosage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-        />
-        <EditText
-            android:hint="Dosage Taken"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-        />
-    </LinearLayout>-->
 </LinearLayout>
