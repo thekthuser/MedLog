@@ -37,8 +37,8 @@ public class Manage extends BaseListActivity {
             setContentView(R.layout.manage);
             ExpList = (ExpandableListView) findViewById(android.R.id.list);
             Log.i("AAAAAAAAAAAAAAAAAAA", "create explist");
-            //ExpListItems = dummy_data();
-            ExpListItems = fetch_data();
+            ExpListItems = dummy_data();
+            //ExpListItems = fetch_data();
             Log.i("AAAAAAAAAAAAAAAAAA", "create dummy_data");
             ExpAdapter = new ManageExpandableListAdapter(Manage.this, 
             ExpListItems);
@@ -49,31 +49,6 @@ public class Manage extends BaseListActivity {
             Log.i("EEEEEEEEEEEEEEEEE", e.getMessage());
         }
 
-            /*ArrayList meds = createGroupList();
-            ArrayList prescriptions = createChildList(meds);
-            SimpleExpandableListAdapter xList = 
-                new SimpleExpandableListAdapter(
-                    this,
-                    //createGroupList(),
-                    meds,
-                    //R.layout.manage_medication_expanded,
-                    R.layout.manage_medication,
-                    new String[] {"Scientific Name", "Brand Name"},
-                    new int[] {R.id.display_scientific_name, R.id.display_brand_name},
-                    //createChildList(),
-                    prescriptions,
-                    R.layout.manage_prescription,
-                    //R.layout.manage_prescription_last,
-                    //new String[] {"Sub Item"},
-                    new String[] {"Pill Dosage", "Dosage Taken"},
-                    new int[] {R.id.display_pill_dosage}
-                );
-            getExpandableListView().setGroupIndicator(null);
-            getExpandableListView().setOnChildClickListener(this);
-            setListAdapter(xList);
-        } catch (Exception e) {
-            System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEE " + e.getMessage());
-        }*/
     }
 
     public ArrayList<Medication> fetch_data(){
@@ -87,10 +62,6 @@ public class Manage extends BaseListActivity {
             ArrayList<Prescription> pres = mAdapter.getPrescriptionList(m.getId());
             m.setPrescriptions(pres);
         }
-        /*for (int i = 0; i < meds.size(); i++) {
-            //ArrayList<Prescription> pres = mAdapter.getPrescriptionList();
-            //meds.add(pres);
-        }*/
 
         mAdapter.close();
 
@@ -98,20 +69,6 @@ public class Manage extends BaseListActivity {
     }
 
     public ArrayList<Medication> dummy_data() {
-        /*ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
-        mAdapter.open();
-        ArrayList meds = mAdapter.getMedicationList();
-
-        for (int i = 0; i < meds.size(); i++) {
-            ArrayList<Prescription> pres = new ArrayList();
-            for (int j = 0; j < 3; j++) {
-                Prescription child = new Prescription(i, "pill", "dosage");
-                pres.add(child);
-            }
-            meds.add(pres);
-        }
-        mAdapter.close();
-        return meds;*/
         ArrayList<Medication> meds = new ArrayList<Medication>();
         ArrayList<Prescription> pres = new ArrayList<Prescription>();
 
@@ -139,69 +96,6 @@ public class Manage extends BaseListActivity {
 
     }
 
-    private ArrayList createGroupList() {
-        /*ArrayList result = new ArrayList();
-        for(int i = 0; i < 4; i++) {
-            HashMap m = new HashMap();
-                m.put("Scientific Name", "Scientific Name" + Integer.toString(i));
-                m.put("Brand Name", "Brand Name" + Integer.toString(i));
-                result.add(m);
-        }
-        return (List) result;*/
-        ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
-        mAdapter.open();
-        ArrayList meds = mAdapter.getMedicationList();
-        mAdapter.close();
-
-        return meds;
-
-    }
-
-    private ArrayList createChildList(ArrayList meds) {
-        /*ArrayList result = new ArrayList();
-        for (int i = 0; i < meds.size(); i++) {
-            ArrayList childList = new ArrayList();
-            Medication asdf = (Medication) meds.get(i);
-            int aaa = asdf.getId();
-        ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
-        mAdapter.open();
-            childList = mAdapter.getPrescriptionList(aaa);//asdf.getId());
-        mAdapter.close();
-            result.add(childList);
-        }
-        return result;*/
-            
-        ArrayList result = new ArrayList();
-        for(int i = 0; i < 4; i++) {
-            ArrayList secList = new ArrayList();
-            for(int n = 0; n < 3; n++) {
-                HashMap child = new HashMap();
-                //child.put("Sub Item", "Sub" + Integer.toString(n));
-                child.put("Pill Dosage", "pill dosage");
-                child.put("Dosage Taken", "dosage taken");
-            secList.add( child );
-            }
-        result.add(secList);
-        }
-        return result;
-
-        /*ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
-        mAdapter.open();
-        ArrayList result = new ArrayList();
-        for (int i = 0; i < meds.size(); i++) {
-            ArrayList test = mAdapter.getPrescriptionList(i);
-            result.add(test);
-        }
-        mAdapter.close();
-        return result;*/
-
-        /*ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
-        mAdapter.open();
-        List prescriptions = mAdapter.getPrescriptionList(count);
-        mAdapter.close();
-        return prescriptions;*/
-    }
-
     public void togglePrescriptionEdit(View view) {
         /*ExpandableListView ev = getExpandableListView();
         long evid = ev.getSelectedPosition();
@@ -214,12 +108,6 @@ public class Manage extends BaseListActivity {
         }*/
         String groupPosition = view.getTag().toString();
         Toast.makeText(getBaseContext(), groupPosition, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-        Toast.makeText(getBaseContext(), Integer.toString(groupPosition), Toast.LENGTH_LONG).show();
-        return true;
     }
 
     public void toggleNewMed(View view) {

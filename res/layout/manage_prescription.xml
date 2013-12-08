@@ -10,5 +10,11 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         />
+    <TextView
+        android:id="@+id/display_dosage_taken"
+        android:layout_width="150px"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        />
 
 </LinearLayout>

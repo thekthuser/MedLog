@@ -22,14 +22,6 @@
             android:layout_weight="1"
             android:gravity="right"
         />
-    <!--<ImageButton
-        android:id="@+id/newPrescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle_plus_12"
-        android:clickable="true"
-        android:onClick="togglePrescriptionEdit"
-    />-->
     <ImageView
             android:id="@+id/toggleNewPrescription"
             android:layout_width="wrap_content"
@@ -41,7 +33,7 @@
             android:clickable="true"
         />
     </LinearLayout>
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="fill_parent"
         android:orientation="horizontal"
         android:layout_height="fill_parent"
@@ -57,5 +49,5 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
         />
-    </LinearLayout>
+    </LinearLayout>-->
 </LinearLayout>

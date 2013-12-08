@@ -104,10 +104,6 @@ public class ManageAdapter {
         ArrayList<Medication> meds = new ArrayList<Medication>();
         if (cursor.moveToFirst()) {
             do {
-                /*HashMap m = new HashMap();
-                m.put("Scientific Name", cursor.getString(1));
-                m.put("Brand Name", cursor.getString(2));
-                meds.add(m);*/
                 Medication m = new Medication(cursor.getInt(0), 
                 cursor.getString(1), cursor.getString(2));
                 meds.add(m);
@@ -191,36 +187,12 @@ public class ManageAdapter {
         ArrayList<Prescription> pres = new ArrayList<Prescription>();
         if (cursor.moveToFirst()) {
             do {
-                /*HashMap m = new HashMap();
-                m.put("Pill Dosage", cursor.getString(2));
-                m.put("Dosage Taken", cursor.getString(3));
-                result.add(m);*/
                 Prescription p = new Prescription(cursor.getInt(0), 
                 cursor.getInt(1), cursor.getString(2), cursor.getString(3));
                 pres.add(p);
             } while (cursor.moveToNext());
         }
         return pres;
-
-
-        /*ArrayList secList = new ArrayList();
-        for (int i = 0; i < count; i++) {
-            if (cursor.moveToFirst()) {
-                do {
-                    HashMap m = new HashMap();
-                    m.put("Pill Dosage", cursor.getString(2));
-                    m.put("Dosage Taken", cursor.getString(3));
-                    secList.add(m);
-                } while (cursor.moveToNext());
-            }
-        }
-        return secList;*/
-        /*ArrayList test = new ArrayList();
-        HashMap t = new HashMap();
-        t.put("Pill Dosage", "dosage");
-        test.add(t);
-        return test;*/
     }
-
 
 }
