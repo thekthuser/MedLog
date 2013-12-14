@@ -24,6 +24,9 @@ import java.util.List;
 import com.thekthuser.medlog.ManageExpandableListAdapter;
 import java.util.Iterator;
 
+import android.widget.LinearLayout;
+import android.content.res.Resources;
+
 import android.util.Log;
 
 public class Manage extends BaseListActivity {
@@ -37,8 +40,8 @@ public class Manage extends BaseListActivity {
             setContentView(R.layout.manage);
             ExpList = (ExpandableListView) findViewById(android.R.id.list);
             Log.i("AAAAAAAAAAAAAAAAAAA", "create explist");
-            ExpListItems = dummy_data();
-            //ExpListItems = fetch_data();
+            //ExpListItems = dummy_data();
+            ExpListItems = fetch_data();
             Log.i("AAAAAAAAAAAAAAAAAA", "create dummy_data");
             ExpAdapter = new ManageExpandableListAdapter(Manage.this, 
             ExpListItems);
@@ -100,14 +103,36 @@ public class Manage extends BaseListActivity {
         /*ExpandableListView ev = getExpandableListView();
         long evid = ev.getSelectedPosition();
         Toast.makeText(getBaseContext(), Long.toString(evid), Toast.LENGTH_LONG).show();*/
-        /*View newPres = findViewById(R.id.test);
+        /*View newPres = findViewById(R.id.newPrescription);
         if (newPres.getVisibility() == View.VISIBLE) {
             newPres.setVisibility(View.GONE);
         } else {
             newPres.setVisibility(View.VISIBLE);
         }*/
-        String groupPosition = view.getTag().toString();
-        Toast.makeText(getBaseContext(), groupPosition, Toast.LENGTH_LONG).show();
+        String groupId = view.getTag().toString();
+        //view.findViewWithTag is looking for a child view
+
+        Log.i("BBBBBBBBBtoggleactivityBBBBBBBBBB", "newPrescription" + groupId);
+        //LinearLayout toggle = (LinearLayout) view.findViewWithTag("newPrescription" + groupId);
+        //LinearLayout toggle = (LinearLayout) view.findViewById(Integer.parseInt(groupId));
+        View parent = (View) view.getParent().getParent();
+        LinearLayout toggle = (LinearLayout) parent.findViewWithTag("newPrescription" + groupId);
+        //int test = context.getResources().getIdentifier("newPrescription" + groupId, "id", context.getPackageName());
+        //Resources res = getApplicationContext().getResources();
+        //int test = res.getIdentifier("newPrescription" + groupId, "id", getApplicationContext().getPackageName());
+        //LinearLayout toggle = (LinearLayout) view.findViewById(test);
+
+        /*if (toggle.getVisibility() == View.VISIBLE) {
+            toggle.setVisibility(View.GONE);
+        } else {
+            toggle.setVisibility(View.VISIBLE);
+        }*/
+
+        if (toggle == null) {
+        Toast.makeText(getBaseContext(), "null", Toast.LENGTH_LONG).show();
+        } else {
+        Toast.makeText(getBaseContext(), toggle.getTag().toString(), Toast.LENGTH_LONG).show();
+        }
     }
 
     public void toggleNewMed(View view) {

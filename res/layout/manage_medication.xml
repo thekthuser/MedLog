@@ -33,4 +33,24 @@
             android:clickable="true"
         />
     </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" 
+        android:id="@+id/newPrescription" >
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pill_dosage"
+            android:hint="Pill Dosage"
+        />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dosage_taken"
+            android:hint="Dosage to take"
+        />
+    </LinearLayout>
+
 </LinearLayout>

@@ -44,8 +44,10 @@ public class ManageAdapter {
             String[] args = {
                 sId
             };
+            Log.i("BBBBBBBBBBBBBBBBBB", "b4 update");
             db.update(DatabaseHelper.TABLE_MEDICATION, cValues, where, args);
         } else {
+            Log.i("BBBBBBBBBBBBBBBBBB", "b4 insert " + medication.getId());
             db.insert(DatabaseHelper.TABLE_MEDICATION, null, cValues);
         }
     }
@@ -78,7 +80,7 @@ public class ManageAdapter {
         if (cursor.moveToFirst()) {
             medication = new Medication(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
         } else {
-            medication = new Medication(-1, "Scientific Name", "Brand Name");
+            medication = new Medication("Scientific Name", "Brand Name");
         }
         return medication;
     }
@@ -104,6 +106,7 @@ public class ManageAdapter {
         ArrayList<Medication> meds = new ArrayList<Medication>();
         if (cursor.moveToFirst()) {
             do {
+                Log.i("BBBBBBBBBBBBBBB", "getMedList id = " + cursor.getInt(0));
                 Medication m = new Medication(cursor.getInt(0), 
                 cursor.getString(1), cursor.getString(2));
                 meds.add(m);
@@ -159,8 +162,7 @@ public class ManageAdapter {
             prescription = new Prescription(cursor.getInt(0), cursor.getInt(1), 
             cursor.getString(2), cursor.getString(3));
         } else {
-            //not sure about this
-            prescription = new Prescription(-1, -1, "Pill Dosage", "Dosage Taken");
+            prescription = new Prescription(-1, "Pill Dosage", "Dosage Taken");
         }
         return prescription;
     }
