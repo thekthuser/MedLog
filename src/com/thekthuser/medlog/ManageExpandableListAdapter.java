@@ -84,6 +84,7 @@ public class ManageExpandableListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isLastChild, 
     View view, ViewGroup parent) {
         Medication group = (Medication) getGroup(groupPosition);
+
         if (view == null) {
             LayoutInflater inf = (LayoutInflater)
             context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -96,22 +97,12 @@ public class ManageExpandableListAdapter extends BaseExpandableListAdapter {
         view.findViewById(R.id.display_scientific_name);
         ImageView button = (ImageView) view.findViewById(R.id.toggleNewPrescription);
         LinearLayout toggle = (LinearLayout) view.findViewById(R.id.newPrescription);
-       //int test = context.getResources().getIdentifier("newPrescription" + group.getId(), "id", context.getPackageName());
-        //toggle.setId(group.getId());
         toggle.setTag("newPrescription" + group.getId());
         
-        //toggle.setTag("newPrescription" + group.getId());
-        //toggle.setVisibility(View.VISIBLE);
-        //Log.i("BBBBBtoggleadapterBBBBBB", toggle.getTag().toString());
 
         brand_name.setText(group.getBrandName());
         scientific_name.setText(group.getScientificName());
-        //Log.i("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", Integer.toString(groupPosition));
-        //button.setTag(groupPosition);
         button.setTag(group.getId());
-        /*if (button == null) {
-            brand_name.setText("null");
-        }*/
 
         return view;
     }

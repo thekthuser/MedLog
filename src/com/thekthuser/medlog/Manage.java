@@ -100,38 +100,16 @@ public class Manage extends BaseListActivity {
     }
 
     public void toggleNewPrescription(View view) {
-        /*ExpandableListView ev = getExpandableListView();
-        long evid = ev.getSelectedPosition();
-        Toast.makeText(getBaseContext(), Long.toString(evid), Toast.LENGTH_LONG).show();*/
-        /*View newPres = findViewById(R.id.newPrescription);
-        if (newPres.getVisibility() == View.VISIBLE) {
-            newPres.setVisibility(View.GONE);
-        } else {
-            newPres.setVisibility(View.VISIBLE);
-        }*/
         String groupId = view.getTag().toString();
-        //view.findViewWithTag is looking for a child view
-
-        Log.i("BBBBBBBBBtoggleactivityBBBBBBBBBB", "newPrescription" + groupId);
-        //LinearLayout toggle = (LinearLayout) view.findViewWithTag("newPrescription" + groupId);
-        //LinearLayout toggle = (LinearLayout) view.findViewById(Integer.parseInt(groupId));
+        //need to go 2 levels up to find LinearLayout
         View parent = (View) view.getParent().getParent();
         LinearLayout toggle = (LinearLayout) parent.findViewWithTag("newPrescription" + groupId);
-        //int test = context.getResources().getIdentifier("newPrescription" + groupId, "id", context.getPackageName());
-        //Resources res = getApplicationContext().getResources();
-        //int test = res.getIdentifier("newPrescription" + groupId, "id", getApplicationContext().getPackageName());
-        //LinearLayout toggle = (LinearLayout) view.findViewById(test);
 
-        /*if (toggle.getVisibility() == View.VISIBLE) {
-            toggle.setVisibility(View.GONE);
+        if (toggle.getVisibility() == View.VISIBLE) {
+            //ideally, this should be View.GONE
+            toggle.setVisibility(View.INVISIBLE);
         } else {
             toggle.setVisibility(View.VISIBLE);
-        }*/
-
-        if (toggle == null) {
-        Toast.makeText(getBaseContext(), "null", Toast.LENGTH_LONG).show();
-        } else {
-        Toast.makeText(getBaseContext(), toggle.getTag().toString(), Toast.LENGTH_LONG).show();
         }
     }
 
