@@ -58,7 +58,9 @@ public class ManageExpandableListAdapter extends BaseExpandableListAdapter {
         }
         //populate xml here
         TextView pill_dosage = (TextView) view.findViewById(R.id.display_pill_dosage);
+        TextView dosage_taken = (TextView) view.findViewById(R.id.display_dosage_taken);
         pill_dosage.setText(child.getPillDosage());
+        dosage_taken.setText(child.getDosageTaken());
 
         return view;
     }
