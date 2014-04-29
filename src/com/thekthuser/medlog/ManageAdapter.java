@@ -37,17 +37,14 @@ public class ManageAdapter {
         ContentValues cValues = new ContentValues();
         cValues.put(DatabaseHelper.COLUMN_SCIENTIFIC_NAME, medication.getScientificName());
         cValues.put(DatabaseHelper.COLUMN_BRAND_NAME, medication.getBrandName());
-        Log.i("AAAAAAAAAAAAAAAA", medication.getBrandName());
         if (medication.getId() != -1) {
             String sId = Integer.toString(medication.getId());
             String where = DatabaseHelper.COLUMN_ID + " = ?";
             String[] args = {
                 sId
             };
-            Log.i("BBBBBBBBBBBBBBBBBB", "b4 update");
             db.update(DatabaseHelper.TABLE_MEDICATION, cValues, where, args);
         } else {
-            Log.i("BBBBBBBBBBBBBBBBBB", "b4 insert " + medication.getId());
             db.insert(DatabaseHelper.TABLE_MEDICATION, null, cValues);
         }
     }
@@ -106,7 +103,6 @@ public class ManageAdapter {
         ArrayList<Medication> meds = new ArrayList<Medication>();
         if (cursor.moveToFirst()) {
             do {
-                Log.i("BBBBBBBBBBBBBBB", "getMedList id = " + cursor.getInt(0));
                 Medication m = new Medication(cursor.getInt(0), 
                 cursor.getString(1), cursor.getString(2));
                 meds.add(m);

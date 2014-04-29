@@ -40,8 +40,8 @@ public class Manage extends BaseListActivity {
             setContentView(R.layout.manage);
             ExpList = (ExpandableListView) findViewById(android.R.id.list);
             Log.i("AAAAAAAAAAAAAAAAAAA", "create explist");
-            //ExpListItems = dummy_data();
-            ExpListItems = fetch_data();
+            ExpListItems = dummy_data();
+            //ExpListItems = fetch_data();
             Log.i("AAAAAAAAAAAAAAAAAA", "create dummy_data");
             ExpAdapter = new ManageExpandableListAdapter(Manage.this, 
             ExpListItems);
@@ -138,6 +138,17 @@ public class Manage extends BaseListActivity {
         //toggle_new_med(view);
         finish();
         startActivity(getIntent());
+
+    }
+
+    public void updatePrescription(View view) {
+        /*EditText pill_dosage = (EditText) findViewById(R.id.pill_dosage);
+        EditText dosage_taken = (EditText) findViewById(R.id.dosage_taken);
+
+        Toast.makeText(getBaseContext(), pill_dosage.getText().toString(), Toast.LENGTH_LONG).show();*/
+        View asdf = (View) view.getParent();
+        String groupId = asdf.getTag().toString();
+        Toast.makeText(getBaseContext(), groupId, Toast.LENGTH_LONG).show();
 
     }
 
