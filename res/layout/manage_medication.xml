@@ -26,7 +26,7 @@
             android:id="@+id/toggleNewPrescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/circle_plus_12"
+            android:src="@drawable/circle_plus_blue"
             android:gravity="right"
             android:padding="4dp"
             android:onClick="toggleNewPrescription"

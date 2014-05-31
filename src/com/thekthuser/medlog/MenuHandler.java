@@ -31,6 +31,9 @@ public class MenuHandler {
             case R.id.menu_manage:
                 manage();
                 return true;
+            case R.id.menu_test:
+                test();
+                return true;
             default:
                 return activity.onOptionsItemSelected(item);
         }
@@ -45,5 +48,9 @@ public class MenuHandler {
         Intent intent = new Intent(activity, Manage.class);
         activity.startActivity(intent);
     }
-
+	
+	 public void test() {
+        Intent intent = new Intent(activity, Test.class);
+        activity.startActivity(intent);
+    }
 }
