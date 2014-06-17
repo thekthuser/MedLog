@@ -101,6 +101,9 @@ public class ManageExpandableListAdapter extends BaseExpandableListAdapter {
         LinearLayout toggle = (LinearLayout) view.findViewById(R.id.newPrescription);
         toggle.setTag("newPrescription" + group.getId());
         
+        LinearLayout medication = (LinearLayout) view.findViewById(R.id.medication);
+        medication.setTag(group);
+        
 
         brand_name.setText(group.getBrandName());
         scientific_name.setText(group.getScientificName());

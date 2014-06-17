@@ -142,13 +142,9 @@ public class Manage extends BaseListActivity {
     }
 
     public void updatePrescription(View view) {
-        /*EditText pill_dosage = (EditText) findViewById(R.id.pill_dosage);
-        EditText dosage_taken = (EditText) findViewById(R.id.dosage_taken);
-
-        Toast.makeText(getBaseContext(), pill_dosage.getText().toString(), Toast.LENGTH_LONG).show();*/
-        View asdf = (View) view.getParent();
-        String groupId = asdf.getTag().toString();
-        Toast.makeText(getBaseContext(), groupId, Toast.LENGTH_LONG).show();
+        LinearLayout aaa = (LinearLayout) view.getParent().getParent();
+        Medication med = (Medication) aaa.getTag();
+        Toast.makeText(getBaseContext(), med.getBrandName(), Toast.LENGTH_LONG).show();
 
     }
 
