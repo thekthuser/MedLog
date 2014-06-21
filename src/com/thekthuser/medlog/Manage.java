@@ -40,8 +40,8 @@ public class Manage extends BaseListActivity {
             setContentView(R.layout.manage);
             ExpList = (ExpandableListView) findViewById(android.R.id.list);
             Log.i("AAAAAAAAAAAAAAAAAAA", "create explist");
-            ExpListItems = dummy_data();
-            //ExpListItems = fetch_data();
+            //ExpListItems = dummy_data();
+            ExpListItems = fetch_data();
             Log.i("AAAAAAAAAAAAAAAAAA", "create dummy_data");
             ExpAdapter = new ManageExpandableListAdapter(Manage.this, 
             ExpListItems);
@@ -104,10 +104,11 @@ public class Manage extends BaseListActivity {
         //need to go 2 levels up to find LinearLayout
         View parent = (View) view.getParent().getParent();
         LinearLayout toggle = (LinearLayout) parent.findViewWithTag("newPrescription" + groupId);
+        //Toast.makeText(getBaseContext(), toggle.getTag().toString(), Toast.LENGTH_LONG).show();
 
         if (toggle.getVisibility() == View.VISIBLE) {
             //ideally, this should be View.GONE
-            toggle.setVisibility(View.INVISIBLE);
+            toggle.setVisibility(View.GONE);
         } else {
             toggle.setVisibility(View.VISIBLE);
         }
@@ -142,9 +143,15 @@ public class Manage extends BaseListActivity {
     }
 
     public void updatePrescription(View view) {
-        LinearLayout aaa = (LinearLayout) view.getParent().getParent();
-        Medication med = (Medication) aaa.getTag();
-        Toast.makeText(getBaseContext(), med.getBrandName(), Toast.LENGTH_LONG).show();
+        LinearLayout layout = (LinearLayout) view.getParent().getParent();
+        Medication med = (Medication) layout.getTag();
+        String asdf = (String) Integer.toString(med.getId());
+        Toast.makeText(getBaseContext(), "newDosage" + asdf, Toast.LENGTH_LONG).show();
+
+        /*EditText dosage = (EditText) view.findViewWithTag("newDosage" + asdf);
+        String aaa = dosage.getText().toString();
+        Toast.makeText(getBaseContext(), aaa, Toast.LENGTH_LONG).show();*/
+
 
     }
 

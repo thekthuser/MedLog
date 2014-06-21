@@ -47,13 +47,13 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/pill_dosage"
+                android:id="@+id/pill_dosage_edit"
                 android:hint="Pill Dosage"
             />
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/dosage_taken"
+                android:id="@+id/dosage_taken_edit"
                 android:hint="Dosage to take"
             />
         </LinearLayout>

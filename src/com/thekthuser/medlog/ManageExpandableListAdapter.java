@@ -10,6 +10,7 @@ import android.widget.BaseExpandableListAdapter;
 import com.thekthuser.medlog.Medication;
 import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.EditText;
 
 import android.widget.LinearLayout;
 import android.content.res.Resources;
@@ -93,13 +94,14 @@ public class ManageExpandableListAdapter extends BaseExpandableListAdapter {
             view = inf.inflate(R.layout.manage_medication, null);
         }
 
-        TextView brand_name = (TextView) 
-        view.findViewById(R.id.display_brand_name);
-        TextView scientific_name = (TextView) 
-        view.findViewById(R.id.display_scientific_name);
+        TextView brand_name = (TextView) view.findViewById(R.id.display_brand_name);
+        TextView scientific_name = (TextView) view.findViewById(R.id.display_scientific_name);
         ImageView button = (ImageView) view.findViewById(R.id.toggleNewPrescription);
         LinearLayout toggle = (LinearLayout) view.findViewById(R.id.newPrescription);
         toggle.setTag("newPrescription" + group.getId());
+
+        EditText dosage = (EditText) view.findViewById(R.id.dosage_taken_edit);
+        dosage.setTag("newDosage" + group.getId());
         
         LinearLayout medication = (LinearLayout) view.findViewById(R.id.medication);
         medication.setTag(group);
