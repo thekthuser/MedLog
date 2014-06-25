@@ -85,9 +85,9 @@ public class Manage extends BaseListActivity {
         //ArrayList<Prescription> pres = new ArrayList<Prescription>();
         pres.clear();
         Medication group2 = new Medication(1, "sci2", "bra2");
-        Prescription child21 = new Prescription(1, 1, "pill", "dosage");
+        Prescription child21 = new Prescription(1, 1, "2pill", "2dosage");
         pres.add(child21);
-        Prescription child22 = new Prescription(1, 2, "pill2", "dosage2");
+        Prescription child22 = new Prescription(1, 2, "2pill2", "2dosage2");
         pres.add(child22);
         group2.setPrescriptions(pres);
         
@@ -145,8 +145,21 @@ public class Manage extends BaseListActivity {
     public void updatePrescription(View view) {
         LinearLayout layout = (LinearLayout) view.getParent().getParent();
         Medication med = (Medication) layout.getTag();
-        String asdf = (String) Integer.toString(med.getId());
-        Toast.makeText(getBaseContext(), "newDosage" + asdf, Toast.LENGTH_LONG).show();
+        //String asdf = (String) Integer.toString(med.getId());
+        //Toast.makeText(getBaseContext(), "newDosage" + asdf, Toast.LENGTH_LONG).show();
+        EditText pill_dosage = (EditText) layout.findViewById(R.id.pill_dosage_edit);
+        EditText dosage_taken = (EditText) layout.findViewById(R.id.dosage_taken_edit);
+        Prescription pres = new Prescription(med.getId(), pill_dosage.getText().toString(), dosage_taken.getText().toString());
+
+        ManageAdapter mAdapter = new ManageAdapter(getApplicationContext());
+        mAdapter.open();
+        mAdapter.addPrescription(pres);
+        mAdapter.close();
+        //Toast.makeText(getBaseContext(), Integer.toString(pres.getId()), Toast.LENGTH_LONG).show();
+
+        finish();
+        startActivity(getIntent());
+        //Toast.makeText(getBaseContext(), dosage.getText().toString(), Toast.LENGTH_LONG).show();
 
         /*EditText dosage = (EditText) view.findViewWithTag("newDosage" + asdf);
         String aaa = dosage.getText().toString();
