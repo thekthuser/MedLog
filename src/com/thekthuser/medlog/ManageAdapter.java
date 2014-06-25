@@ -170,7 +170,7 @@ public class ManageAdapter {
             DatabaseHelper.COLUMN_PILL_DOSAGE,
             DatabaseHelper.COLUMN_DOSAGE_TAKEN
         };
-        String where = DatabaseHelper.COLUMN_ID + " = " + medId;
+        String where = DatabaseHelper.COLUMN_MEDICATION_ID + " = " + medId;
         String order = DatabaseHelper.COLUMN_ID + " ASC";
 
         Cursor cursor = dbr.query(
