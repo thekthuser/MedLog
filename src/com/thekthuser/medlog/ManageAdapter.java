@@ -123,9 +123,9 @@ public class ManageAdapter {
             String[] args = {
                 sId
             };
-            db.update(DatabaseHelper.TABLE_MEDICATION, cValues, where, args);
+            db.update(DatabaseHelper.TABLE_PRESCRIPTION, cValues, where, args);
         } else {
-            db.insert(DatabaseHelper.TABLE_MEDICATION, null, cValues);
+            db.insert(DatabaseHelper.TABLE_PRESCRIPTION, null, cValues);
         }
     }
 
@@ -170,12 +170,13 @@ public class ManageAdapter {
             DatabaseHelper.COLUMN_PILL_DOSAGE,
             DatabaseHelper.COLUMN_DOSAGE_TAKEN
         };
+        String where = DatabaseHelper.COLUMN_MEDICATION_ID + " = " + medId;
         String order = DatabaseHelper.COLUMN_ID + " ASC";
 
         Cursor cursor = dbr.query(
             DatabaseHelper.TABLE_PRESCRIPTION,
             projection,
-            null,
+            where,
             null,
             null,
             null,
