@@ -23,6 +23,13 @@
             android:layout_weight="1"
             android:gravity="right"
         />
+        <ImageView
+            android:id="@+id/groupIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:src="@drawable/ic_find_open_holo_light"
+        />
     <ImageView
             android:id="@+id/toggleNewPrescription"
             android:layout_width="wrap_content"
