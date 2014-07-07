@@ -7,6 +7,7 @@ import android.widget.ListView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import android.widget.ExpandableListView;
 import android.app.ExpandableListActivity;
 import android.content.Context;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupClickListener;
 import android.view.LayoutInflater;
 
 import android.widget.SimpleExpandableListAdapter;
@@ -39,17 +41,60 @@ public class Manage extends BaseListActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.manage);
             ExpList = (ExpandableListView) findViewById(android.R.id.list);
-            Log.i("AAAAAAAAAAAAAAAAAAA", "create explist");
             //ExpListItems = dummy_data();
             ExpListItems = fetch_data();
-            Log.i("AAAAAAAAAAAAAAAAAA", "create dummy_data");
             ExpAdapter = new ManageExpandableListAdapter(Manage.this, 
             ExpListItems);
-            Log.i("AAAAAAAAAAAAAAAAAA", "create explist adapter");
             ExpList.setAdapter(ExpAdapter);
-            Log.i("AAAAAAAAAAAAAAAAAA", "set adapter");
+            /*ExpList.setOnGroupClickListener(new OnGroupClickListener() {
+                public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, 
+                long id) {
+                    ImageView open = (ImageView) v.findViewWithTag("openMedication" + Integer.toString(groupPosition));
+                    ImageView close = (ImageView) v.findViewWithTag("closeMedication" + Integer.toString(groupPosition));
+                    if (open.getVisibility() == View.VISIBLE) {
+                        open.setVisibility(View.GONE);
+                        close.setVisibility(View.VISIBLE);
+                        parent.expandGroup(groupPosition);
+                    } else {
+                        open.setVisibility(View.VISIBLE);
+                        close.setVisibility(View.GONE);
+                        parent.collapseGroup(groupPosition);
+                    }
+                    Toast.makeText(getBaseContext(), open.getTag().toString() + close.getTag().toString(), Toast.LENGTH_LONG).show();
+                    return true;
+                }
+
+
+
+
+
+                ExpList.setOnGroupCollapseListener(new OnGroupCollapseListener() {
+                    @Override
+                    public void onGroupCollapse(int groupPosition) {
+                        ImageView open = (ImageView) v.findViewWithTag("openMedication" + Integer.toString(groupPosition));
+                        ImageView close = (ImageView) v.findViewWithTag("closeMedication" + Integer.toString(groupPosition));
+                        open.setVisibility(View.GONE);
+                        close.setVisibility(View.VISIBLE);
+                        }
+                });
+                ExpList.setOnGroupExpandListener(new OnGroupExpandListener() {
+                    @Override
+                    public void onGroupExpand(int groupPosition) {
+                        ImageView open = (ImageView) v.findViewWithTag("openMedication" + Integer.toString(groupPosition));
+                        ImageView close = (ImageView) v.findViewWithTag("closeMedication" + Integer.toString(groupPosition));
+                        open.setVisibility(View.VISIBLE);
+                        close.setVisibility(View.GONE);
+                        }
+                });
+                return true;
+            });*/
+
+
+
+
+
         } catch (Exception e) {
-            Log.i("EEEEEEEEEEEEEEEEE", e.getMessage());
+            Log.i("MedLog Exception: ", e.getMessage());
         }
 
     }

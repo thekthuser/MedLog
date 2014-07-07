@@ -7,9 +7,9 @@
 
     <ExpandableListView
         android:id="@android:id/list"
-        android:groupIndicator="@null"
         android:layout_width="fill_parent"
-        android:layout_height="300dp" />
+        android:layout_height="300dp"
+        android:groupIndicator="@drawable/group_indicator_selector" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
