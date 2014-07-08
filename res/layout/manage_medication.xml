@@ -21,7 +21,8 @@
             android:layout_height="wrap_content"
             android:text="@string/scientific_name"
             android:layout_weight="1"
-            android:gravity="right"
+            android:gravity="left"
+            android:padding="4dp"
         />
         <ImageView
             android:id="@+id/groupIndicator"
