@@ -101,10 +101,14 @@ public class ManageExpandableListAdapter extends BaseExpandableListAdapter {
         toggle.setTag("newPrescription" + group.getId());
 
         ImageView groupIndicator = (ImageView) view.findViewById(R.id.groupIndicator);
-        if (isExpanded) {
-            groupIndicator.setImageResource(R.drawable.ic_find_close_holo_light);
+        if (getChildrenCount(groupPosition) < 1) {
+            groupIndicator.setImageResource(0);
         } else {
-            groupIndicator.setImageResource(R.drawable.ic_find_open_holo_light);
+            if (isExpanded) {
+                groupIndicator.setImageResource(R.drawable.ic_find_open_holo_light);
+            } else {
+                groupIndicator.setImageResource(R.drawable.ic_find_close_holo_light);
+            }
         }
         
 
