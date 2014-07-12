@@ -108,7 +108,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/self_phone_edit"
-                android:inputType="number"
+                android:phoneNumber="true"
             />
         </LinearLayout>
         <Button 
@@ -233,7 +233,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/prescriber_phone_edit"
-                android:inputType="number"
+                android:phoneNumber="true"
             />
         </LinearLayout>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -386,7 +386,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/pharmacy_phone_edit"
-                android:inputType="number"
+                android:phoneNumber="true"
             />
         </LinearLayout>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -534,12 +534,13 @@
                 android:padding="5dp"
                 android:id="@+id/emergency_phone_show"
                 android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/emergency_phone_edit"
-                android:inputType="number"
+                android:phoneNumber="true"
             />
         </LinearLayout>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

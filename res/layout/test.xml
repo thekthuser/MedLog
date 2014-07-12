@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    
+    <EditText
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/pill_dosage_edit"
+		android:hint="Pill Dosage"
+		android:inputType="number"
+	/>
+	<EditText
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/dosage_taken_edit"
+		android:hint="Dosage to take"
+		android:inputType="number"
+	/>
+	
+	<TextView
+        android:id="@+id/display_pill_dosage"
+        android:layout_width="150px"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:textSize="22sp"
+        />
+    <TextView
+        android:id="@+id/display_dosage_taken"
+        android:layout_width="150px"
+        android:layout_height="wrap_content"
+		android:paddingLeft="10dp"
+		android:textSize="22sp"
+        />   
+         
+	<Button 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="right"
+		android:text="@string/edit"
+		android:id="@+id/add_new_prescription"
+	/>
+	<Button 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="right"
+		android:text="@string/update"
+		android:id="@+id/add_new_prescription"
+		android:visibility="gone"
+	/>
+	
+</LinearLayout>
