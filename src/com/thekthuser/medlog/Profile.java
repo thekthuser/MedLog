@@ -21,6 +21,16 @@ public class Profile extends BaseActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
+
+        Button updateSelfButton = (Button) findViewById(R.id.update_self_button);
+        Button updatePrescriberButton = (Button) findViewById(R.id.update_prescriber_button);
+        Button updatePharmacyButton = (Button) findViewById(R.id.update_pharmacy_button);
+        Button updateEmergencyButton = (Button) findViewById(R.id.update_emergency_button);
+
+        updateSelfButton.setOnClickListener(updateSelf);
+        updatePrescriberButton.setOnClickListener(updatePrescriber);
+        updatePharmacyButton.setOnClickListener(updatePharmacy);
+        updateEmergencyButton.setOnClickListener(updateEmergency);
         
         refreshProfile(findViewById(R.layout.profile));
 
@@ -176,154 +186,166 @@ public class Profile extends BaseActivity
         update.setVisibility(View.VISIBLE);
     }
 
-    public void updateSelf(View view) {
-        EditText name = (EditText) findViewById(R.id.self_name_edit);
-        EditText address = (EditText) findViewById(R.id.self_address_edit);
-        EditText phone = (EditText) findViewById(R.id.self_phone_edit);
+    View.OnClickListener updateSelf = new View.OnClickListener() {
+    //public void updateSelf(View view) {
+        public void onClick(View view) {
+            EditText name = (EditText) findViewById(R.id.self_name_edit);
+            EditText address = (EditText) findViewById(R.id.self_address_edit);
+            EditText phone = (EditText) findViewById(R.id.self_phone_edit);
 
-        /*self_general.setName(name.getText().toString());
-        self_general.setAddress(address.getText().toString());
-        self_general.setPhone(phone.getText().toString());*/
-        //Log.i("updateSelf", Integer.toString(self_general.getId()));
-        //Log.i("updateSelf", self_general.getName());
-        /*GeneralInfo sGeneral = new GeneralInfo(name.getText().toString(), address.getText().toString(), phone.getText().toString());
-        Self self = new Self(sGeneral);
+            /*self_general.setName(name.getText().toString());
+            self_general.setAddress(address.getText().toString());
+            self_general.setPhone(phone.getText().toString());*/
+            //Log.i("updateSelf", Integer.toString(self_general.getId()));
+            //Log.i("updateSelf", self_general.getName());
+            /*GeneralInfo sGeneral = new GeneralInfo(name.getText().toString(), address.getText().toString(), phone.getText().toString());
+            Self self = new Self(sGeneral);
 
-        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
-        pAdapter.open();
-        pAdapter.addSelf(self);
-        Log.i("updateSelf", "after addSelf");
-        pAdapter.close();*/
-        View vSelf = findViewById(R.id.self);
-        Self self = (Self) vSelf.getTag();
+            ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+            pAdapter.open();
+            pAdapter.addSelf(self);
+            Log.i("updateSelf", "after addSelf");
+            pAdapter.close();*/
+            View vSelf = findViewById(R.id.self);
+            Self self = (Self) vSelf.getTag();
 
-        GeneralInfo sGeneral = self.getGeneralInfo();
-        sGeneral.setName(name.getText().toString());
-        sGeneral.setAddress(address.getText().toString());
-        sGeneral.setPhone(phone.getText().toString());
-        self.setGeneralInfo(sGeneral);
+            GeneralInfo sGeneral = self.getGeneralInfo();
+            sGeneral.setName(name.getText().toString());
+            sGeneral.setAddress(address.getText().toString());
+            sGeneral.setPhone(phone.getText().toString());
+            self.setGeneralInfo(sGeneral);
 
-        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
-        pAdapter.open();
-        pAdapter.addSelf(self);
-        pAdapter.close();
+            ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+            pAdapter.open();
+            pAdapter.addSelf(self);
+            pAdapter.close();
 
-        /*InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        try {
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        //above hides keyboard
-        } catch (Exception e) {
-            throw new RuntimeException("hideSoftInputFromWindow", e);
-        }*/
-        finish();
-        startActivity(getIntent());
-        //temporary fix
+            /*InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            try {
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            //above hides keyboard
+            } catch (Exception e) {
+                throw new RuntimeException("hideSoftInputFromWindow", e);
+            }*/
+            finish();
+            startActivity(getIntent());
+            //temporary fix
 
-        setContentView(R.layout.profile);
-        refreshProfile(findViewById(R.layout.profile));
-    }
+            setContentView(R.layout.profile);
+            refreshProfile(findViewById(R.layout.profile));
+        }
+    };
 
-    public void updatePrescriber(View view) {
-        EditText name = (EditText) findViewById(R.id.prescriber_name_edit);
-        EditText address = (EditText) findViewById(R.id.prescriber_address_edit);
-        EditText phone = (EditText) findViewById(R.id.prescriber_phone_edit);
-        EditText specialty = (EditText) findViewById(R.id.prescriber_specialty_edit);
+    View.OnClickListener updatePrescriber = new View.OnClickListener() {
+    //public void updatePrescriber(View view) {
+        public void onClick(View view) {
+            EditText name = (EditText) findViewById(R.id.prescriber_name_edit);
+            EditText address = (EditText) findViewById(R.id.prescriber_address_edit);
+            EditText phone = (EditText) findViewById(R.id.prescriber_phone_edit);
+            EditText specialty = (EditText) findViewById(R.id.prescriber_specialty_edit);
 
-        View vPrescriber = findViewById(R.id.prescriber);
-        Prescriber prescriber = (Prescriber) vPrescriber.getTag();
+            View vPrescriber = findViewById(R.id.prescriber);
+            Prescriber prescriber = (Prescriber) vPrescriber.getTag();
 
-        GeneralInfo pGeneral = prescriber.getGeneralInfo();
-        pGeneral.setName(name.getText().toString());
-        pGeneral.setAddress(address.getText().toString());
-        pGeneral.setPhone(phone.getText().toString());
-        prescriber.setSpecialty(specialty.getText().toString());
-        prescriber.setGeneralInfo(pGeneral);
+            GeneralInfo pGeneral = prescriber.getGeneralInfo();
+            pGeneral.setName(name.getText().toString());
+            pGeneral.setAddress(address.getText().toString());
+            pGeneral.setPhone(phone.getText().toString());
+            prescriber.setSpecialty(specialty.getText().toString());
+            prescriber.setGeneralInfo(pGeneral);
 
-        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
-        pAdapter.open();
-        pAdapter.addPrescriber(prescriber);
-        pAdapter.close();
+            ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+            pAdapter.open();
+            pAdapter.addPrescriber(prescriber);
+            pAdapter.close();
 
-        finish();
-        startActivity(getIntent());
-        //temporary fix
-        
-        setContentView(R.layout.profile);
-        refreshProfile(findViewById(R.layout.profile));
+            finish();
+            startActivity(getIntent());
+            //temporary fix
+            
+            setContentView(R.layout.profile);
+            refreshProfile(findViewById(R.layout.profile));
 
-        /*GeneralInfo pGeneral = new GeneralInfo(name.getText().toString(), address.getText().toString(), phone.getText().toString());
-        Prescriber prescriber = new Prescriber(specialty.getText().toString(), pGeneral);
+            /*GeneralInfo pGeneral = new GeneralInfo(name.getText().toString(), address.getText().toString(), phone.getText().toString());
+            Prescriber prescriber = new Prescriber(specialty.getText().toString(), pGeneral);
 
-        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
-        pAdapter.open();
-        pAdapter.addPrescriber(prescriber);
-        pAdapter.close();
+            ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+            pAdapter.open();
+            pAdapter.addPrescriber(prescriber);
+            pAdapter.close();
 
-        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        //above hides keyboard
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            //above hides keyboard
 
-        setContentView(R.layout.profile);
-        refreshProfile(findViewById(R.layout.profile));*/
-    }
+            setContentView(R.layout.profile);
+            refreshProfile(findViewById(R.layout.profile));*/
+        }
+    };
 
-    public void updatePharmacy(View view) {
-        EditText name = (EditText) findViewById(R.id.pharmacy_name_edit);
-        EditText address = (EditText) findViewById(R.id.pharmacy_address_edit);
-        EditText phone = (EditText) findViewById(R.id.pharmacy_phone_edit);
-        EditText hours = (EditText) findViewById(R.id.pharmacy_hours_edit);
+    View.OnClickListener updatePharmacy = new View.OnClickListener() {
+        public void onClick(View view) {
+        //public void updatePharmacy(View view) {
+            EditText name = (EditText) findViewById(R.id.pharmacy_name_edit);
+            EditText address = (EditText) findViewById(R.id.pharmacy_address_edit);
+            EditText phone = (EditText) findViewById(R.id.pharmacy_phone_edit);
+            EditText hours = (EditText) findViewById(R.id.pharmacy_hours_edit);
 
-        View vPharmacy = findViewById(R.id.pharmacy);
-        Pharmacy pharmacy = (Pharmacy) vPharmacy.getTag();
+            View vPharmacy = findViewById(R.id.pharmacy);
+            Pharmacy pharmacy = (Pharmacy) vPharmacy.getTag();
 
-        GeneralInfo phGeneral = pharmacy.getGeneralInfo();
-        phGeneral.setName(name.getText().toString());
-        phGeneral.setAddress(address.getText().toString());
-        phGeneral.setPhone(phone.getText().toString());
-        pharmacy.setHours(hours.getText().toString());
-        pharmacy.setGeneralInfo(phGeneral);
+            GeneralInfo phGeneral = pharmacy.getGeneralInfo();
+            phGeneral.setName(name.getText().toString());
+            phGeneral.setAddress(address.getText().toString());
+            phGeneral.setPhone(phone.getText().toString());
+            pharmacy.setHours(hours.getText().toString());
+            pharmacy.setGeneralInfo(phGeneral);
 
-        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
-        pAdapter.open();
-        pAdapter.addPharmacy(pharmacy);
-        pAdapter.close();
+            ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+            pAdapter.open();
+            pAdapter.addPharmacy(pharmacy);
+            pAdapter.close();
 
-        finish();
-        startActivity(getIntent());
-        //temporary fix
-        
-        setContentView(R.layout.profile);
-        refreshProfile(findViewById(R.layout.profile));
-    }
+            finish();
+            startActivity(getIntent());
+            //temporary fix
+            
+            setContentView(R.layout.profile);
+            refreshProfile(findViewById(R.layout.profile));
+        }
+    };
 
-    public void updateEmergency(View view) {
-        EditText name = (EditText) findViewById(R.id.emergency_name_edit);
-        EditText address = (EditText) findViewById(R.id.emergency_address_edit);
-        EditText phone = (EditText) findViewById(R.id.emergency_phone_edit);
-        EditText relation = (EditText) findViewById(R.id.emergency_relation_edit);
+    View.OnClickListener updateEmergency = new View.OnClickListener() {
+        public void onClick(View view) {
+        //public void updateEmergency(View view) {
+            EditText name = (EditText) findViewById(R.id.emergency_name_edit);
+            EditText address = (EditText) findViewById(R.id.emergency_address_edit);
+            EditText phone = (EditText) findViewById(R.id.emergency_phone_edit);
+            EditText relation = (EditText) findViewById(R.id.emergency_relation_edit);
 
-        View vEmergency = findViewById(R.id.emergency);
-        Emergency emergency = (Emergency) vEmergency.getTag();
+            View vEmergency = findViewById(R.id.emergency);
+            Emergency emergency = (Emergency) vEmergency.getTag();
 
-        GeneralInfo eGeneral = emergency.getGeneralInfo();
-        eGeneral.setName(name.getText().toString());
-        eGeneral.setAddress(address.getText().toString());
-        eGeneral.setPhone(phone.getText().toString());
-        emergency.setRelation(relation.getText().toString());
-        emergency.setGeneralInfo(eGeneral);
+            GeneralInfo eGeneral = emergency.getGeneralInfo();
+            eGeneral.setName(name.getText().toString());
+            eGeneral.setAddress(address.getText().toString());
+            eGeneral.setPhone(phone.getText().toString());
+            emergency.setRelation(relation.getText().toString());
+            emergency.setGeneralInfo(eGeneral);
 
-        ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
-        pAdapter.open();
-        pAdapter.addEmergency(emergency);
-        pAdapter.close();
+            ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
+            pAdapter.open();
+            pAdapter.addEmergency(emergency);
+            pAdapter.close();
 
-        finish();
-        startActivity(getIntent());
-        //temporary fix is below needed?
+            finish();
+            startActivity(getIntent());
+            //temporary fix is below needed?
 
-        /*setContentView(R.layout.profile);
-        refreshProfile(findViewById(R.layout.profile));*/
-    }
+            /*setContentView(R.layout.profile);
+            refreshProfile(findViewById(R.layout.profile));*/
+        }
+    };
 
     public void refreshProfile(View view) {
         ProfileAdapter pAdapter = new ProfileAdapter(getApplicationContext());
