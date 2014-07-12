@@ -7,6 +7,7 @@ import android.widget.ListView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import android.widget.ExpandableListView;
 import android.app.ExpandableListActivity;
 import android.content.Context;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupClickListener;
 import android.view.LayoutInflater;
 
 import android.widget.SimpleExpandableListAdapter;
@@ -39,17 +41,13 @@ public class Manage extends BaseListActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.manage);
             ExpList = (ExpandableListView) findViewById(android.R.id.list);
-            Log.i("AAAAAAAAAAAAAAAAAAA", "create explist");
             //ExpListItems = dummy_data();
             ExpListItems = fetch_data();
-            Log.i("AAAAAAAAAAAAAAAAAA", "create dummy_data");
             ExpAdapter = new ManageExpandableListAdapter(Manage.this, 
             ExpListItems);
-            Log.i("AAAAAAAAAAAAAAAAAA", "create explist adapter");
             ExpList.setAdapter(ExpAdapter);
-            Log.i("AAAAAAAAAAAAAAAAAA", "set adapter");
         } catch (Exception e) {
-            Log.i("EEEEEEEEEEEEEEEEE", e.getMessage());
+            Log.i("MedLog Exception: ", e.getMessage());
         }
 
     }

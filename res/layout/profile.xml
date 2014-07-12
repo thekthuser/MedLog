@@ -126,8 +126,8 @@
             android:text="@string/update"
             android:id="@+id/update_self_button"
             android:visibility="gone"
-            android:onClick="updateSelf"
         />
+        <!--android:onClick="updateSelf"-->
     </LinearLayout>
 
     <TextView
@@ -280,7 +280,6 @@
             android:text="@string/update"
             android:id="@+id/update_prescriber_button"
             android:visibility="gone"
-            android:onClick="updatePrescriber"
         />
     </LinearLayout>
 
@@ -435,7 +434,6 @@
             android:text="@string/update"
             android:id="@+id/update_pharmacy_button"
             android:visibility="gone"
-            android:onClick="updatePharmacy"
         />
     </LinearLayout>
 
@@ -588,7 +586,6 @@
             android:text="@string/update"
             android:id="@+id/update_emergency_button"
             android:visibility="gone"
-            android:onClick="updateEmergency"
         />
     </LinearLayout>
 

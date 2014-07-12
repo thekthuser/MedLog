@@ -84,7 +84,7 @@ public class ManageExpandableListAdapter extends BaseExpandableListAdapter {
         return groupPosition;
     }
 
-    public View getGroupView(int groupPosition, boolean isLastChild, 
+    public View getGroupView(int groupPosition, boolean isExpanded, 
     View view, ViewGroup parent) {
         Medication group = (Medication) getGroup(groupPosition);
 
@@ -99,6 +99,18 @@ public class ManageExpandableListAdapter extends BaseExpandableListAdapter {
         ImageView button = (ImageView) view.findViewById(R.id.toggleNewPrescription);
         LinearLayout toggle = (LinearLayout) view.findViewById(R.id.newPrescription);
         toggle.setTag("newPrescription" + group.getId());
+
+        ImageView groupIndicator = (ImageView) view.findViewById(R.id.groupIndicator);
+        if (getChildrenCount(groupPosition) < 1) {
+            groupIndicator.setImageResource(0);
+        } else {
+            if (isExpanded) {
+                groupIndicator.setImageResource(R.drawable.ic_find_open_holo_light);
+            } else {
+                groupIndicator.setImageResource(R.drawable.ic_find_close_holo_light);
+            }
+        }
+        
 
         EditText dosage = (EditText) view.findViewById(R.id.dosage_taken_edit);
         dosage.setTag("newDosage" + group.getId());
