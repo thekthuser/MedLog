@@ -32,6 +32,7 @@
                 android:text="@string/name"
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -39,6 +40,8 @@
                 android:text="Sample Name"
                 android:padding="5dp"
                 android:id="@+id/self_name_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
@@ -59,6 +62,7 @@
                 android:text="@string/address"
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -66,6 +70,8 @@
                 android:text="Sample Address"
                 android:padding="5dp"
                 android:id="@+id/self_address_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
@@ -87,6 +93,7 @@
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
                 android:autoLink="all"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -94,11 +101,14 @@
                 android:text="Sample Phone"
                 android:padding="5dp"
                 android:id="@+id/self_phone_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/self_phone_edit"
+                android:inputType="number"
             />
         </LinearLayout>
         <Button 
@@ -147,6 +157,7 @@
                 android:text="@string/name"
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -154,6 +165,8 @@
                 android:text="Sample Name"
                 android:padding="5dp"
                 android:id="@+id/prescriber_name_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
@@ -174,6 +187,7 @@
                 android:text="@string/address"
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -181,6 +195,8 @@
                 android:text="Sample Address"
                 android:padding="5dp"
                 android:id="@+id/prescriber_address_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
@@ -202,6 +218,7 @@
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
                 android:autoLink="all"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -209,11 +226,14 @@
                 android:text="Sample Phone"
                 android:padding="5dp"
                 android:id="@+id/prescriber_phone_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/prescriber_phone_edit"
+                android:inputType="number"
             />
         </LinearLayout>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -228,6 +248,7 @@
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
                 android:autoLink="all"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -235,6 +256,8 @@
                 android:text="Specialty"
                 android:padding="5dp"
                 android:id="@+id/prescriber_specialty_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
@@ -288,6 +311,7 @@
                 android:text="@string/name"
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -295,6 +319,8 @@
                 android:text="Sample Name"
                 android:padding="5dp"
                 android:id="@+id/pharmacy_name_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
@@ -315,6 +341,7 @@
                 android:text="@string/address"
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -322,6 +349,8 @@
                 android:text="Sample Address"
                 android:padding="5dp"
                 android:id="@+id/pharmacy_address_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
@@ -343,6 +372,7 @@
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
                 android:autoLink="all"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -350,11 +380,14 @@
                 android:text="Sample Phone"
                 android:padding="5dp"
                 android:id="@+id/pharmacy_phone_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/pharmacy_phone_edit"
+                android:inputType="number"
             />
         </LinearLayout>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -369,6 +402,7 @@
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
                 android:autoLink="all"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -376,11 +410,14 @@
                 android:text="Hours"
                 android:padding="5dp"
                 android:id="@+id/pharmacy_hours_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/pharmacy_hours_edit"
+                android:inputType="number"
             />
         </LinearLayout>
         <Button 
@@ -429,6 +466,7 @@
                 android:text="@string/name"
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -436,6 +474,8 @@
                 android:text="Sample Name"
                 android:padding="5dp"
                 android:id="@+id/emergency_name_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
@@ -456,6 +496,7 @@
                 android:text="@string/address"
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -463,6 +504,8 @@
                 android:text="Sample Address"
                 android:padding="5dp"
                 android:id="@+id/emergency_address_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"
@@ -484,6 +527,7 @@
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
                 android:autoLink="all"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -491,11 +535,13 @@
                 android:text="Sample Phone"
                 android:padding="5dp"
                 android:id="@+id/emergency_phone_show"
+                android:textSize="22sp"
             />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/emergency_phone_edit"
+                android:inputType="number"
             />
         </LinearLayout>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -510,6 +556,7 @@
                 android:layout_marginLeft="5dp"
                 android:padding="5dp"
                 android:autoLink="all"
+                android:textSize="22sp"
             />
             <TextView
                 android:layout_width="fill_parent"
@@ -517,6 +564,8 @@
                 android:text="Relation"
                 android:padding="5dp"
                 android:id="@+id/emergency_relation_show"
+                android:textSize="22sp"
+                android:textColor="#0099CC"
             />
             <EditText
                 android:layout_width="fill_parent"

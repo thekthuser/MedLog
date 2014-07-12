@@ -14,6 +14,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/brand_name"
+            android:textColor="#0099CC"
+            android:textSize="22sp"
+            android:paddingLeft="10dp"
         />
         <TextView
             android:id="@+id/display_scientific_name"
@@ -22,6 +25,9 @@
             android:text="@string/scientific_name"
             android:layout_weight="1"
             android:gravity="right"
+            android:textColor="#99CC00"
+            android:textSize="22sp"
+            android:paddingRight="10dp"
         />
     <ImageView
             android:id="@+id/toggleNewPrescription"
@@ -49,12 +55,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/pill_dosage_edit"
                 android:hint="Pill Dosage"
+                android:inputType="number"
             />
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/dosage_taken_edit"
                 android:hint="Dosage to take"
+                android:inputType="number"
             />
         </LinearLayout>
         <Button

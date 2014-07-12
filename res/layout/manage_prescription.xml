@@ -8,13 +8,15 @@
         android:id="@+id/display_pill_dosage"
         android:layout_width="150px"
         android:layout_height="wrap_content"
-        android:padding="5dp"
+        android:paddingLeft="10dp"
+        android:textSize="22sp"
         />
     <TextView
         android:id="@+id/display_dosage_taken"
         android:layout_width="150px"
         android:layout_height="wrap_content"
-        android:padding="5dp"
+		android:paddingLeft="10dp"
+		android:textSize="22sp"
         />
 
 </LinearLayout>
