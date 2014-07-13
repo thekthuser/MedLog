@@ -10,7 +10,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.thekthuser.medlog.Profile">
+        <activity android:name="com.thekthuser.medlog.Profile"
+                    android:windowSoftInputMode="adjustResize" >
                 <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.thekthuser.medlog.main" />
