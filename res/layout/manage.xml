@@ -26,12 +26,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/brand_name"
-                android:hint="Brand Name" />
+                android:hint="Brand Name" 
+                android:inputType="text" />
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/scientific_name"
-                android:hint="Scientific Name" />
+                android:hint="Scientific Name"
+                android:inputType="text" />
         </LinearLayout>
         <Button
             android:layout_width="wrap_content"
