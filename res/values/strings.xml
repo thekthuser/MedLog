@@ -19,6 +19,13 @@
     <string name="hours">Hours:</string>
     <string name="relation">Relation:</string>
 
+    <string name="enter_name">Enter a name</string>
+    <string name="enter_address">Enter an address</string>
+    <string name="enter_phone">Enter a phone</string>
+    <string name="enter_specialty">Specialty</string>
+    <string name="enter_hours">Hours</string>
+    <string name="enter_relation">Relation</string>
+
     <string name="scientific_name">Scientific Name</string>
     <string name="brand_name">Brand Name</string>
 

@@ -53,6 +53,7 @@
                     android:visibility="gone"
                     android:id="@+id/self_name_edit"
                     android:inputType="text"
+                    android:hint="@string/enter_name"
                 />
             </LinearLayout>
 
@@ -84,6 +85,7 @@
                     android:id="@+id/self_address_edit"
                     android:visibility="gone"
                     android:inputType="text"
+                    android:hint="@string/enter_address"
                 />
             </LinearLayout>
 
@@ -115,6 +117,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/self_phone_edit"
                     android:phoneNumber="true"
+                    android:hint="@string/enter_phone"
+                    android:visibility="gone"
                 />
             </LinearLayout>
             <Button 
@@ -180,6 +184,7 @@
                     android:visibility="gone"
                     android:id="@+id/prescriber_name_edit"
                     android:inputType="text"
+                    android:hint="@string/enter_name"
                 />
             </LinearLayout>
 
@@ -211,6 +216,7 @@
                     android:id="@+id/prescriber_address_edit"
                     android:visibility="gone"
                     android:inputType="text"
+                    android:hint="@string/enter_address"
                 />
             </LinearLayout>
 
@@ -242,6 +248,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/prescriber_phone_edit"
                     android:phoneNumber="true"
+                    android:hint="@string/enter_phone"
+                    android:visibility="gone"
                 />
             </LinearLayout>
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -272,6 +280,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/prescriber_specialty_edit"
                     android:inputType="text"
+                    android:hint="@string/enter_specialty"
+                    android:visibility="gone"
                 />
             </LinearLayout>
             <Button 
@@ -336,6 +346,7 @@
                     android:visibility="gone"
                     android:id="@+id/pharmacy_name_edit"
                     android:inputType="text"
+                    android:hint="@string/enter_name"
                 />
             </LinearLayout>
 
@@ -367,6 +378,7 @@
                     android:id="@+id/pharmacy_address_edit"
                     android:visibility="gone"
                     android:inputType="text"
+                    android:hint="@string/enter_address"
                 />
             </LinearLayout>
 
@@ -398,6 +410,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/pharmacy_phone_edit"
                     android:phoneNumber="true"
+                    android:hint="@string/enter_phone"
+                    android:visibility="gone"
                 />
             </LinearLayout>
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -428,6 +442,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/pharmacy_hours_edit"
                     android:inputType="number"
+                    android:hint="@string/enter_hours"
+                    android:visibility="gone"
                 />
             </LinearLayout>
             <Button 
@@ -492,6 +508,7 @@
                     android:visibility="gone"
                     android:id="@+id/emergency_name_edit"
                     android:inputType="text"
+                    android:hint="@string/enter_name"
                 />
             </LinearLayout>
 
@@ -523,6 +540,7 @@
                     android:id="@+id/emergency_address_edit"
                     android:visibility="gone"
                     android:inputType="text"
+                    android:hint="@string/enter_address"
                 />
             </LinearLayout>
 
@@ -554,6 +572,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/emergency_phone_edit"
                     android:phoneNumber="true"
+                    android:hint="@string/enter_phone"
+                    android:visibility="gone"
                 />
             </LinearLayout>
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -584,6 +604,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/emergency_relation_edit"
                     android:inputType="text"
+                    android:hint="@string/enter_relation"
+                    android:visibility="gone"
                 />
             </LinearLayout>
             <Button 

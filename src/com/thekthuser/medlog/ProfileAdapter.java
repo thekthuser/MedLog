@@ -161,7 +161,7 @@ public class ProfileAdapter {
                 null, //String[] having (filter for groups)
                 order  //String[] orderBy
         );
-        GeneralInfo general = new GeneralInfo("Enter a name", "Enter an address", "Enter a phone");
+        GeneralInfo general = new GeneralInfo("", "", "");
         if(cursor.moveToFirst()) {
             general.setId(cursor.getInt(0));
             general.setName(cursor.getString(1));
@@ -202,7 +202,7 @@ public class ProfileAdapter {
         } else {
             Log.i("getpres", "not found");
             GeneralInfo pGeneral = getGeneralInfo(-1);
-            prescriber = new Prescriber(-1, "Specialty", pGeneral);
+            prescriber = new Prescriber(-1, "", pGeneral);
         }
         return prescriber;
     }
@@ -272,7 +272,7 @@ public class ProfileAdapter {
             pharmacy = new Pharmacy(cursor.getInt(0), cursor.getString(1), pGeneral);
         } else {
             GeneralInfo pGeneral = getGeneralInfo(-1);
-            pharmacy = new Pharmacy(-1, "Hours", pGeneral);
+            pharmacy = new Pharmacy(-1, "", pGeneral);
         }
         return pharmacy;
     }
@@ -306,7 +306,7 @@ public class ProfileAdapter {
             emergency = new Emergency(cursor.getInt(0), cursor.getString(1), phGeneral);
         } else {
             GeneralInfo phGeneral = getGeneralInfo(-1);
-            emergency = new Emergency(-1, "Relation", phGeneral);
+            emergency = new Emergency(-1, "", phGeneral);
         }
         return emergency;
     }
