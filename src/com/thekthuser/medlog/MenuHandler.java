@@ -34,6 +34,9 @@ public class MenuHandler {
             case R.id.menu_test:
             	test();
             	return true;
+            case R.id.menu_newprofile:
+                newProfile();
+                return true;
             default:
                 return activity.onOptionsItemSelected(item);
         }
@@ -52,6 +55,11 @@ public class MenuHandler {
     public void test() {
     	Intent intent = new Intent(activity, Test.class);
     	activity.startActivity(intent);
+    }
+
+    public void newProfile() {
+        Intent intent = new Intent(activity, NewProfile.class);
+        activity.startActivity(intent);
     }
 	
 }

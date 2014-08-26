@@ -27,5 +27,11 @@
 				android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.thekthuser.medlog.main" />
         </activity>
+        <activity android:name="com.thekthuser.medlog.NewProfile"
+                    android:windowSoftInputMode="adjustResize" >
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.thekthuser.medlog.main" />
+        </activity>
     </application>
 </manifest> 
